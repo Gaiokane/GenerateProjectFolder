@@ -37,9 +37,9 @@ namespace GenerateProjectFolder
          * 2.是否存在[配置文件中的key]
          * 3.新增配置方法（传入key、value）
          * 4.编辑配置方法（传入key、value）
-         * 5.
-         * 6.
-         * 7.
+         * 5.是否存在指定路径下指定文件夹
+         * 6.复制文件
+         * 7.重命名文件
          */
     }
 }
