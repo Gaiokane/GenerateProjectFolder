@@ -60,6 +60,10 @@ namespace GenerateProjectFolder
          * 15.
          * 备注：
          * 1）1.默认值如文件项、生成至路径
+         * ———————用到的工具类———————
+         * 1.Gaiokane.dll——独写配置文件[https://github.com/Gaiokane/Gaiokane-RWConfig_DLL]
+         * 2.Aspose.Cells——Excel操作类，vs中程序包管理器[Install-Package Aspose.Cells][https://github.com/aspose-cells/Aspose.Cells-for-.NET][https://github.com/Jimmey-Jiang/Common.Utility/blob/master/src/Utility%E5%9F%BA%E7%A1%80%E7%B1%BB%E5%A4%A7%E5%85%A8_CN/Excel%E6%93%8D%E4%BD%9C%E7%B1%BB/excel.txt]
+         * 3.
          */
     }
 }
