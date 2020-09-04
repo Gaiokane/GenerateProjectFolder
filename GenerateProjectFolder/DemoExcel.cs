@@ -79,6 +79,15 @@ namespace GenerateProjectFolder
             MessageBox.Show(ReadFromExcelFileByCell(textBox1.Text, 0, 7, 2));
             WriteToExcelByCell(textBox1.Text, 0, 7, 2, "使用NPOI写入");
             MessageBox.Show(ReadFromExcelFileByCell(textBox1.Text, 0, 7, 2));
+
+
+            /*FileStream file = new FileStream(textBox1.Text, FileMode.Open, FileAccess.Read);
+            XSSFWorkbook workbook = new XSSFWorkbook(file);
+            workbook.GetSheetAt(0).GetRow(7).GetCell(2).SetCellValue("qaq");
+            FileStream file2 = new FileStream(textBox1.Text, FileMode.Create);
+            workbook.Write(file2);
+            file2.Close();
+            MessageBox.Show(ReadFromExcelFileByCell(textBox1.Text, 0, 7, 2));*/
         }
 
         /// <summary>
@@ -216,7 +225,8 @@ namespace GenerateProjectFolder
             string extension = System.IO.Path.GetExtension(filePath);
             try
             {
-                FileStream fs = File.OpenRead(filePath);
+                //FileStream fs = File.OpenRead(filePath);
+                FileStream fs = new FileStream(filePath, FileMode.Open, FileAccess.Read);
                 if (extension.Equals(".xls"))
                 {
                     //把xls文件中的数据写入wk中
@@ -230,9 +240,11 @@ namespace GenerateProjectFolder
 
                 fs.Close();
                 //读取当前表数据
-                ISheet sheet = wk.GetSheetAt(sheetIndex);
+                /*ISheet sheet = wk.GetSheetAt(sheetIndex);
                 ICell icell = sheet.GetRow(row).GetCell(cell);
-                SetCellValue(icell, cellValue);
+                SetCellValue(icell, cellValue);*/
+                //简化上面
+                wk.GetSheetAt(sheetIndex).GetRow(row).GetCell(cell).SetCellValue(cellValue);
                 //MessageBox.Show(sheet.GetRow(row).GetCell(cell).ToString());
 
                 try
@@ -256,17 +268,31 @@ namespace GenerateProjectFolder
                     wk.Write(file);
                     file.Close();*/
 
-                    //Write the stream data of workbook to the root directory
-                    MemoryStream ms = new System.IO.MemoryStream();
-                    wk.Write(ms);
-                    ms.Flush();
-                    ms.Position = 0;
-                    SaveToFile(ms, filePath);
-                    /*byte[] o = ms.ToArray();
 
-                    FileStream file = new FileStream(filePath, FileMode.Create);
-                    file.Write(o, 0, o.Length);
-                    file.Close();*/
+
+                    /*try
+                    {
+                        FileStream fsw = File.OpenWrite(filePath);
+                        wk.Write(fsw);//向打开的这个Excel文件中写入表单并保存。  
+                        fsw.Close();
+                        return "true";
+                    }
+                    catch (Exception e)
+                    {
+                        return e.Message;
+                    }*/
+
+
+                    /*byte[] buffer;
+
+                    using (MemoryStream ms = new MemoryStream())
+                    {
+                        wk.Write(ms);
+                        buffer = ms.ToArray();
+                    }
+
+                    File.WriteAllBytes(filePath, buffer);*/
+
 
                     /*
                     System.IO.MemoryStream ms = new System.IO.MemoryStream();
@@ -280,18 +306,20 @@ namespace GenerateProjectFolder
 
 
 
-                    /*
-                    using (System.IO.MemoryStream ms = new System.IO.MemoryStream())
+
+                    using (MemoryStream ms = new MemoryStream())
                     {
                         wk.Write(ms);
-                        using (FileStream fss = new FileStream(filePath, FileMode.Create, FileAccess.Write))
+                        ms.Flush();
+                        ms.Position = 0;
+                        using (FileStream fss = new FileStream(filePath, FileMode.Create, FileAccess.ReadWrite))
                         {
                             byte[] d = ms.ToArray();
                             fss.Write(d, 0, d.Length);
                             fss.Flush();
                         }
                         wk = null;
-                    }*/
+                    }
 
                     /*
                     FileStream fss = new FileStream(filePath, FileMode.Create);
