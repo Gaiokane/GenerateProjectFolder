@@ -31,7 +31,10 @@ namespace GenerateProjectFolder
          * 1.<文件项> 存 文件路径键值对中的键，分号间隔。如<add key="FileName" value="FileName_01;FileName_02;FileName_03" />
          * 2.<文件路径> 存 文件路径，如<add key="FileName_01" value="D:/vs-program/GitHub/GenerateProjectFolder/GenerateProjectFolder.sln" />
          * 3.<生成目录文件路径> 存 生成的目录、文件保存路径，如<add key="ProjectFolderPath" value="D:/vs-program/GitHub/" />
-         * 4.
+         * 4.文件项是否启用、复制、复制并修改（待设计）
+         * 5.
+         * 6.
+         * 7.
          * ———————窗体设计———————
          * 1.主窗体（生成至：[label、textbox]、路径选择[button]、项目编号[label、textbox]、项目名称[label、textbox]、项目简称[label、textbox]、生成[button]、设置[button]）
          * 2.主窗体—设置窗体（模板文件设置、）
@@ -61,9 +64,11 @@ namespace GenerateProjectFolder
          * 备注：
          * 1）1.默认值如文件项、生成至路径
          * ———————用到的工具类———————
-         * 1.Gaiokane.dll——独写配置文件[https://github.com/Gaiokane/Gaiokane-RWConfig_DLL]
-         * 2.Aspose.Cells——Excel操作类，vs中程序包管理器[Install-Package Aspose.Cells][https://github.com/aspose-cells/Aspose.Cells-for-.NET][https://github.com/Jimmey-Jiang/Common.Utility/blob/master/src/Utility%E5%9F%BA%E7%A1%80%E7%B1%BB%E5%A4%A7%E5%85%A8_CN/Excel%E6%93%8D%E4%BD%9C%E7%B1%BB/excel.txt]
-         * 3.
+         * 1.Gaiokane.dll[2.0.0.0]——独写配置文件[https://github.com/Gaiokane/Gaiokane-RWConfig_DLL]
+         * 2.（收费不用）Aspose.Cells[20.8.0.0]——Excel操作类，vs中程序包管理器[Install-Package Aspose.Cells][https://github.com/aspose-cells/Aspose.Cells-for-.NET][https://github.com/Jimmey-Jiang/Common.Utility/blob/master/src/Utility%E5%9F%BA%E7%A1%80%E7%B1%BB%E5%A4%A7%E5%85%A8_CN/Excel%E6%93%8D%E4%BD%9C%E7%B1%BB/excel.txt]
+         * 3.NPOI[2.4.1.0]、NPOI.OOXML[2.4.1.0]、NPOI.OpenXml4Net[2.4.1.0]、NPOI.OpenXmlFormats[2.4.1.0]、——Excel操作类，功能同Aspose.Cells，免费[https://github.com/tonyqus/npoi]
+         * 4.ICSharpCode.SharpZipLib[1.0.0.999]，NPOI会用到
+         * 5.
          */
     }
 }
