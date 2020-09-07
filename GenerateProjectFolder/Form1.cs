@@ -51,16 +51,18 @@ namespace GenerateProjectFolder
          * 3.新增配置方法（传入key、value）
          * 4.编辑配置方法（传入key、value）
          * 5.是否存在指定路径下指定文件夹
-         * 6.是否存在指定文件
+         * 6.是否存在指定文件——IsExists(string fileName)
          * 7.新建文件夹
-         * 8.复制文件
+         * 8.复制文件——CopyFileTo(string source, string dest)
          * 9.重命名文件
-         * 10.文件操作类（写入txt、新增/修改excel）
-         * 11.
-         * 12.
-         * 13.
-         * 14.
-         * 15.
+         * 10.文件是否在使用——IsFileInUsed(string fileName)
+         * 11.文件操作类-新建文件——CreateNewFile(string fileName, string content)
+         * 12.文件操作类-读取excel——ReadExcel(string filePath, int sheetIndex)
+         * 13.文件操作类-读取excel指定单元格——ReadExcelByCell(string filePath, int sheetIndex, int row, int cell)
+         * 14.文件操作类-修改excel指定单元格——ModifyExcelByCell(string filePath, int sheetIndex, int row, int cell, string cellValue)
+         * 15.文件操作类（写入txt、新增/修改excel）
+         * 16.
+         * 17.
          * 备注：
          * 1）1.默认值如文件项、生成至路径
          * ———————用到的工具类———————

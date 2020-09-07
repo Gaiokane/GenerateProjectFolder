@@ -31,6 +31,12 @@ namespace GenerateProjectFolder
             textBox1.Text = @"E:\新建 Microsoft Excel 工作表.xlsx";
             button1.Text = "使用Aspose";
             button2.Text = "使用NPOI";
+
+            textBox2.Width = 300;
+            textBox2.Text = @"E:\codecreatefile.txt";
+            button3.Text = "新建文件";
+
+            button4.Text = "复制文件";
         }
 
         private void textBox1_MouseDoubleClick(object sender, MouseEventArgs e)
@@ -74,9 +80,29 @@ namespace GenerateProjectFolder
 
         private void button2_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(ReadFromExcelFileByCell(textBox1.Text, 0, 7, 2));
-            WriteToExcelByCell(textBox1.Text, 0, 7, 2, "hhh使用NPOI写入123");
-            MessageBox.Show(ReadFromExcelFileByCell(textBox1.Text, 0, 7, 2));
+            MessageBox.Show(ReadExcelByCell(textBox1.Text, 0, 7, 2));
+            ModifyExcelByCell(textBox1.Text, 0, 7, 2, "hhh使用NPOI写入123");
+            MessageBox.Show(ReadExcelByCell(textBox1.Text, 0, 7, 2));
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(textBox2.Text))
+            {
+                MessageBox.Show("不能为空");
+                textBox2.Focus();
+            }
+            else
+            {
+                CreateNewFile(textBox2.Text, "123\n321");
+                MessageBox.Show("OK");
+            }
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            CopyFileTo(@"E:\新建 Microsoft Excel 工作表.xls", @"E:\新建 Microsoft Excel 工作表1.xls");
+            MessageBox.Show("OK");
         }
 
         /// <summary>
@@ -87,7 +113,7 @@ namespace GenerateProjectFolder
         /// <param name="row">行，0开始</param>
         /// <param name="cell">列，0开始</param>
         /// <returns>返回单元格值</returns>
-        public string ReadFromExcelFileByCell(string filePath, int sheetIndex, int row, int cell)
+        public string ReadExcelByCell(string filePath, int sheetIndex, int row, int cell)
         {
             string result = "";
             IWorkbook wk = null;
@@ -126,7 +152,7 @@ namespace GenerateProjectFolder
         /// <param name="filePath">Excel文件路径</param>
         /// <param name="sheetIndex">sheet页index，0开始</param>
         /// <returns>返回sheet页内容</returns>
-        public string ReadFromExcelFile(string filePath, int sheetIndex)
+        public string ReadExcel(string filePath, int sheetIndex)
         {
             string result = "";
             IWorkbook wk = null;
@@ -185,7 +211,7 @@ namespace GenerateProjectFolder
         /// <param name="cell">列，0开始</param>
         /// <param name="cellValue">要修改的单元格数据</param>
         /// <returns></returns>
-        public string WriteToExcelByCell(string filePath, int sheetIndex, int row, int cell, string cellValue)
+        public string ModifyExcelByCell(string filePath, int sheetIndex, int row, int cell, string cellValue)
         {
             IWorkbook wk = null;
             string extension = System.IO.Path.GetExtension(filePath);
@@ -234,6 +260,93 @@ namespace GenerateProjectFolder
                 fs.Write(data, 0, data.Length);
                 fs.Flush();
                 data = null;
+            }
+        }
+
+        /// <summary>
+        /// 新建文件并写入内容，如果已存在，则覆盖，否则新建
+        /// </summary>
+        /// <param name="fileName">文件路径</param>
+        /// <param name="content">文件内容</param>
+        static void CreateNewFile(string fileName, string content)
+        {
+            using (FileStream fs = new FileStream(fileName, FileMode.Create, FileAccess.Write))
+            {
+                StreamWriter sw = new StreamWriter(fs);
+                sw.Write(content);
+                sw.Close();
+            }
+        }
+
+        /// <summary>
+        /// 复制文件，如果目标路径已存在同名文件，则覆盖，否则新建
+        /// </summary>
+        /// <param name="source">源文件路径</param>
+        /// <param name="dest">目标文件路径</param>
+        static void CopyFileTo(string source, string dest)
+        {
+            if (File.Exists(source))//必须判断要复制的文件是否存在
+            {
+                if (IsFileInUsed(source) == false)
+                {
+                    File.Copy(source, dest, true);//三个参数分别是源文件路径，存储路径，若存储路径有相同文件是否替换
+                }
+                else
+                {
+                    MessageBox.Show("在使用");
+                }
+            }
+        }
+
+        /// <summary>
+        /// 判断指定文件是否在使用
+        /// </summary>
+        /// <param name="fileName">文件路径</param>
+        /// <returns>true, false</returns>
+        public static bool IsFileInUsed(string fileName)
+        {
+            bool inUse = true;
+            if (File.Exists(fileName))
+            {
+                FileStream fs = null;
+                try
+                {
+                    fs = new FileStream(fileName, FileMode.Open, FileAccess.Read, FileShare.None);
+                    inUse = false;
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.Message.ToString());
+                }
+                finally
+                {
+                    if (fs != null)
+                    {
+                        fs.Close();
+                    }
+                }
+                return inUse;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// 判断指定文件是否存在
+        /// </summary>
+        /// <param name="fileName">文件路径</param>
+        /// <returns>true, false</returns>
+        public bool IsExists(string fileName)
+        {
+            if (File.Exists(fileName))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
             }
         }
     }
