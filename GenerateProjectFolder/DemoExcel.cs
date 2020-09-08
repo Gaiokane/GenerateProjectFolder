@@ -37,6 +37,8 @@ namespace GenerateProjectFolder
             button3.Text = "新建文件";
 
             button4.Text = "复制文件";
+
+            button5.Text = "新建文件夹";
         }
 
         private void textBox1_MouseDoubleClick(object sender, MouseEventArgs e)
@@ -103,6 +105,19 @@ namespace GenerateProjectFolder
         {
             CopyFileTo(@"E:\新建 Microsoft Excel 工作表.xls", @"E:\新建 Microsoft Excel 工作表1.xls");
             MessageBox.Show("OK");
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            if (IsDirectoryExists(textBox2.Text)||IsFileExists(textBox2.Text))
+            {
+                MessageBox.Show("同名文件或目录已存在");
+            }
+            else
+            {
+                CreateNewDirectory(textBox2.Text);
+                MessageBox.Show("OK");
+            }
         }
 
         /// <summary>
@@ -264,7 +279,7 @@ namespace GenerateProjectFolder
         }
 
         /// <summary>
-        /// 新建文件并写入内容，如果已存在，则覆盖，否则新建
+        /// 新建文件并写入内容，如果已存在，则覆盖
         /// </summary>
         /// <param name="fileName">文件路径</param>
         /// <param name="content">文件内容</param>
@@ -338,16 +353,28 @@ namespace GenerateProjectFolder
         /// </summary>
         /// <param name="fileName">文件路径</param>
         /// <returns>true, false</returns>
-        public bool IsExists(string fileName)
+        public bool IsFileExists(string fileName)
         {
-            if (File.Exists(fileName))
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            return File.Exists(fileName);
+        }
+
+        /// <summary>
+        /// 判断指定目录是否存在
+        /// </summary>
+        /// <param name="path">目录路径</param>
+        /// <returns>true, false</returns>
+        public bool IsDirectoryExists(string path)
+        {
+            return Directory.Exists(path);
+        }
+
+        /// <summary>
+        /// 新建目录，如果已存在，则不进行操作
+        /// </summary>
+        /// <param name="path">目录路径</param>
+        public void CreateNewDirectory(string path)
+        {
+            Directory.CreateDirectory(path);
         }
     }
 }

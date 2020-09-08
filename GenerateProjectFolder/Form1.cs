@@ -50,9 +50,9 @@ namespace GenerateProjectFolder
          * 2.是否存在[配置文件中的key]
          * 3.新增配置方法（传入key、value）
          * 4.编辑配置方法（传入key、value）
-         * 5.是否存在指定路径下指定文件夹
-         * 6.是否存在指定文件——IsExists(string fileName)
-         * 7.新建文件夹
+         * 5.是否指定文件夹——IsDirectoryExists(string path)
+         * 6.新建文件夹——CreateNewDirectory(string path)
+         * 7.是否存在指定文件——IsFileExists(string fileName)
          * 8.复制文件——CopyFileTo(string source, string dest)
          * 9.重命名文件
          * 10.文件是否在使用——IsFileInUsed(string fileName)
