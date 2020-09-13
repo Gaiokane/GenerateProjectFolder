@@ -113,6 +113,25 @@ namespace GenerateProjectFolder
         }
         #endregion
 
+        #region 是否存在配置文件中的key
+        /// <summary>
+        /// 是否存在配置文件中的key
+        /// </summary>
+        /// <param name="key">appSettings键</param>
+        /// <returns>true, false</returns>
+        public static bool IsappSettingsExists(string key)
+        {
+            if (!string.IsNullOrEmpty(getappSettings(key)))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        #endregion
+
         #region 新增appSettings配置
         /// <summary>
         /// 新增appSettings配置
@@ -120,11 +139,11 @@ namespace GenerateProjectFolder
         /// <param name="Key">appSettings键</param>
         /// <param name="Value">appSettings值</param>
         /// <returns>true, false</returns>
-        public static bool addappSettings(string Key, string Value)
+        public static bool addappSettings(string key, string value)
         {
             try
             {
-                RWConfig.SetappSettingsValue(Key, Value, CONFIGPATH);
+                RWConfig.SetappSettingsValue(key, value, CONFIGPATH);
                 return true;
             }
             catch (Exception)
@@ -140,13 +159,13 @@ namespace GenerateProjectFolder
         /// </summary>
         /// <param name="Key">appSettings键</param>
         /// <returns>true, false</returns>
-        public static bool delappSettings(string Key)
+        public static bool delappSettings(string key)
         {
             try
             {
-                if (!string.IsNullOrEmpty(RWConfig.GetappSettingsValue(Key, CONFIGPATH)))
+                if (!string.IsNullOrEmpty(RWConfig.GetappSettingsValue(key, CONFIGPATH)))
                 {
-                    RWConfig.DelappSettingsValue(Key, CONFIGPATH);
+                    RWConfig.DelappSettingsValue(key, CONFIGPATH);
                     return true;
                 }
                 else
@@ -168,13 +187,13 @@ namespace GenerateProjectFolder
         /// <param name="Key">appSettings键</param>
         /// <param name="Value">appSettings值</param>
         /// <returns>true, false</returns>
-        public static bool editappSettings(string Key, string Value)
+        public static bool editappSettings(string key, string value)
         {
             try
             {
-                if (!string.IsNullOrEmpty(RWConfig.GetappSettingsValue(Key, CONFIGPATH)))
+                if (!string.IsNullOrEmpty(RWConfig.GetappSettingsValue(key, CONFIGPATH)))
                 {
-                    RWConfig.SetappSettingsValue(Key, Value, CONFIGPATH);
+                    RWConfig.SetappSettingsValue(key, value, CONFIGPATH);
                     return true;
                 }
                 else
@@ -195,9 +214,9 @@ namespace GenerateProjectFolder
         /// </summary>
         /// <param name="Key">appSettings键</param>
         /// <returns>appSettings值</returns>
-        public static string getappSettings(string Key)
+        public static string getappSettings(string key)
         {
-            string result = RWConfig.GetappSettingsValue(Key, CONFIGPATH);
+            string result = RWConfig.GetappSettingsValue(key, CONFIGPATH);
             return result;
         }
         #endregion
