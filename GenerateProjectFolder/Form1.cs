@@ -56,13 +56,13 @@ namespace GenerateProjectFolder
          * 8.新建文件夹——CreateNewDirectory(string path)
          * 9.是否存在指定文件——IsFileExists(string fileName)
          * 10.复制文件——CopyFileTo(string source, string dest)
-         * 11.重命名文件
+         * 11.重命名/移动文件/目录——MoveFileTo(string source, string dest)
          * 12.文件是否在使用——IsFileInUsed(string fileName)
-         * 13.文件操作类-新建文件——CreateNewFile(string fileName, string content)
+         * 13.文件操作类-新建文件，如新建txt并写入——CreateNewFile(string fileName, string content)
          * 14.文件操作类-读取excel——ReadExcel(string filePath, int sheetIndex)
          * 15.文件操作类-读取excel指定单元格——ReadExcelByCell(string filePath, int sheetIndex, int row, int cell)
          * 16.文件操作类-修改excel指定单元格——ModifyExcelByCell(string filePath, int sheetIndex, int row, int cell, string cellValue)
-         * 17.文件操作类（写入txt、新增/修改excel）
+         * 17.
          * 18.
          * 19.
          * 备注：

@@ -38,7 +38,10 @@ namespace GenerateProjectFolder
 
             button4.Text = "复制文件";
 
-            button5.Text = "新建文件夹";
+            button5.Text = "新建目录";
+
+            button6.Width = 100;
+            button6.Text = "移动文件/目录";
         }
 
         private void textBox1_MouseDoubleClick(object sender, MouseEventArgs e)
@@ -109,7 +112,7 @@ namespace GenerateProjectFolder
 
         private void button5_Click(object sender, EventArgs e)
         {
-            if (IsDirectoryExists(textBox2.Text)||IsFileExists(textBox2.Text))
+            if (IsDirectoryExists(textBox2.Text) || IsFileExists(textBox2.Text))
             {
                 MessageBox.Show("同名文件或目录已存在");
             }
@@ -118,6 +121,11 @@ namespace GenerateProjectFolder
                 CreateNewDirectory(textBox2.Text);
                 MessageBox.Show("OK");
             }
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            MoveFileTo(@"E:\write1.xlsx", @"E:\write.xlsx");
         }
 
         /// <summary>
@@ -308,8 +316,43 @@ namespace GenerateProjectFolder
                 }
                 else
                 {
-                    MessageBox.Show("在使用");
+                    MessageBox.Show("所选文件被占用，无法复制");
                 }
+            }
+        }
+
+        /// <summary>
+        /// 移动文件/目录
+        /// </summary>
+        /// <param name="source">源路径</param>
+        /// <param name="dest">目标路径</param>
+        static void MoveFileTo(string source, string dest)
+        {
+            if (File.Exists(source))
+            {
+                if (IsFileInUsed(source) == false)
+                {
+                    File.Move(source, dest);
+                }
+                else
+                {
+                    MessageBox.Show("所选文件被占用，无法移动");
+                }
+            }
+            else if (Directory.Exists(source))
+            {
+                try
+                {
+                    Directory.Move(source, dest);
+                }
+                catch
+                {
+                    MessageBox.Show("所选文件夹被占用，无法移动");
+                }
+            }
+            else
+            {
+                MessageBox.Show("所选文件/文件夹不存在");
             }
         }
 
