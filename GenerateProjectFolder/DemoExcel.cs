@@ -42,6 +42,8 @@ namespace GenerateProjectFolder
 
             button6.Width = 100;
             button6.Text = "移动文件/目录";
+
+            button7.Text = "FrmMain";
         }
 
         private void textBox1_MouseDoubleClick(object sender, MouseEventArgs e)
@@ -418,6 +420,12 @@ namespace GenerateProjectFolder
         public void CreateNewDirectory(string path)
         {
             Directory.CreateDirectory(path);
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            FrmMain fm = new FrmMain();
+            fm.Show();
         }
     }
 }

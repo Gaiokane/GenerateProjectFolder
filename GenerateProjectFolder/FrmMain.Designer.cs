@@ -121,6 +121,7 @@
             this.button3.TabIndex = 9;
             this.button3.Text = "设置";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // FrmMain
             // 
@@ -138,6 +139,7 @@
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label1);
             this.Name = "FrmMain";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "生成项目文件夹";
             this.ResumeLayout(false);
             this.PerformLayout();

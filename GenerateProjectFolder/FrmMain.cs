@@ -16,5 +16,11 @@ namespace GenerateProjectFolder
         {
             InitializeComponent();
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            FrmSetting fs = new FrmSetting();
+            fs.Show();
+        }
     }
 }
