@@ -44,6 +44,8 @@ namespace GenerateProjectFolder
             button6.Text = "移动文件/目录";
 
             button7.Text = "FrmMain";
+
+            button8.Text = "当前第几周";
         }
 
         private void textBox1_MouseDoubleClick(object sender, MouseEventArgs e)
@@ -426,6 +428,24 @@ namespace GenerateProjectFolder
         {
             FrmMain fm = new FrmMain();
             fm.Show();
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            //获取指定日期，在为一年中为第几周
+            //MessageBox.Show(Helper.CommonHelper.GetWeekOfYear(DateTime.Now).ToString());
+
+            //周数1位数
+            //DateTime dt = Convert.ToDateTime("2020-01-01 11:11:11");
+            //MessageBox.Show(Helper.CommonHelper.GetWeekOfYear(dt).ToString());
+
+            //获取年份后两位
+            //DateTime dt = Convert.ToDateTime("2021-01-01 11:11:11");
+            //MessageBox.Show(dt.Year.ToString().Substring(2));
+
+            //DateTime dt = Convert.ToDateTime("2021-01-01 11:11:11");
+            DateTime dt = DateTime.Now;
+            MessageBox.Show(Helper.CommonHelper.GetTestVersionNum(dt));
         }
     }
 }

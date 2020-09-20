@@ -46,23 +46,23 @@ namespace GenerateProjectFolder
          * 备注：
          * 1.项目简称：用在 xx缺陷截图、xx问题.txt、xx估算、xx项目测试进度 等
          * ———————通用方法设计———————
-         * 1.配置文件默认值设置方法（对不存在的key进行新增）——init()
-         * 2.是否存在[配置文件中的key]——IsappSettingsExists(string key)
-         * 3.新增配置方法（传入key、value）——addappSettings(string key, string value)
-         * 4.编辑配置方法（传入key、value）——editappSettings(string key, string value)
-         * 5.删除配置方法（传入key）——delappSettings(string key)
-         * 6.查询配置方法（传入key）——getappSettings(string key)
-         * 7.是否指定文件夹——IsDirectoryExists(string path)
-         * 8.新建文件夹——CreateNewDirectory(string path)
-         * 9.是否存在指定文件——IsFileExists(string fileName)
-         * 10.复制文件——CopyFileTo(string source, string dest)
-         * 11.重命名/移动文件/目录——MoveFileTo(string source, string dest)
-         * 12.文件是否在使用——IsFileInUsed(string fileName)
-         * 13.文件操作类-新建文件，如新建txt并写入——CreateNewFile(string fileName, string content)
-         * 14.文件操作类-读取excel——ReadExcel(string filePath, int sheetIndex)
-         * 15.文件操作类-读取excel指定单元格——ReadExcelByCell(string filePath, int sheetIndex, int row, int cell)
-         * 16.文件操作类-修改excel指定单元格——ModifyExcelByCell(string filePath, int sheetIndex, int row, int cell, string cellValue)
-         * 17.
+         * 1.配置文件默认值设置方法（对不存在的key进行新增）——[ConfigHelper.cs]init()
+         * 2.是否存在[配置文件中的key]——[ConfigHelper.cs]IsappSettingsExists(string key)
+         * 3.新增配置方法（传入key、value）——[ConfigHelper.cs]addappSettings(string key, string value)
+         * 4.编辑配置方法（传入key、value）——[ConfigHelper.cs]editappSettings(string key, string value)
+         * 5.删除配置方法（传入key）——[ConfigHelper.cs]delappSettings(string key)
+         * 6.查询配置方法（传入key）——[ConfigHelper.cs]getappSettings(string key)
+         * 7.是否指定文件夹——[FileHelper.cs]IsDirectoryExists(string path)
+         * 8.新建文件夹——[FileHelper.cs]CreateNewDirectory(string path)
+         * 9.是否存在指定文件——[FileHelper.cs]IsFileExists(string fileName)
+         * 10.复制文件——[FileHelper.cs]CopyFileTo(string source, string dest)
+         * 11.重命名/移动文件/目录——[FileHelper.cs]MoveFileTo(string source, string dest)
+         * 12.文件是否在使用——[FileHelper.cs]IsFileInUsed(string fileName)
+         * 13.文件操作类-新建文件，如新建txt并写入——[FileHelper.cs]CreateNewFile(string fileName, string content)
+         * 14.文件操作类-读取excel——[ExcelHelper.cs]ReadExcel(string filePath, int sheetIndex)
+         * 15.文件操作类-读取excel指定单元格——[ExcelHelper.cs]ReadExcelByCell(string filePath, int sheetIndex, int row, int cell)
+         * 16.文件操作类-修改excel指定单元格——[ExcelHelper.cs]ModifyExcelByCell(string filePath, int sheetIndex, int row, int cell, string cellValue)
+         * 17.获取指定日期测试版本号——[CommonHelper.cs]GetTestVersionNum(DateTime dt)
          * 18.
          * 19.
          * 备注：
