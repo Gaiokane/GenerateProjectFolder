@@ -17,10 +17,15 @@ namespace GenerateProjectFolder
             InitializeComponent();
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void btn_Setting_Click(object sender, EventArgs e)
         {
             FrmSetting fs = new FrmSetting();
             fs.Show();
+        }
+
+        private void FrmMain_Load(object sender, EventArgs e)
+        {
+            Helper.ConfigHelper.init();
         }
     }
 }

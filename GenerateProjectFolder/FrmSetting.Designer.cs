@@ -28,275 +28,275 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
+            this.groupbox_ProjectFolderSetting = new System.Windows.Forms.GroupBox();
+            this.btn_DefaultProjectFolder_Save = new System.Windows.Forms.Button();
+            this.txtbox_DefaultProjectFolder = new System.Windows.Forms.TextBox();
+            this.lab_DefaultProjectFolder = new System.Windows.Forms.Label();
+            this.groupbox_TemplateFileSetting = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
-            this.groupBox1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.btn_TemplateFileSetting_Cancel = new System.Windows.Forms.Button();
+            this.btn_TemplateFileSetting_Save = new System.Windows.Forms.Button();
+            this.txtbox_TemplateFileSetting_Remark = new System.Windows.Forms.TextBox();
+            this.lab_TemplateFileSetting_Remark = new System.Windows.Forms.Label();
+            this.txtbox_TemplateFileSetting_Path = new System.Windows.Forms.TextBox();
+            this.lab_TemplateFileSetting_Path = new System.Windows.Forms.Label();
+            this.txtbox_TemplateFileSetting_Name = new System.Windows.Forms.TextBox();
+            this.lab_TemplateFileSetting_Name = new System.Windows.Forms.Label();
+            this.txtbox_TemplateFileSetting_Num = new System.Windows.Forms.TextBox();
+            this.lab_TemplateFileSetting_Num = new System.Windows.Forms.Label();
+            this.btn_TemplateFileSetting_Del = new System.Windows.Forms.Button();
+            this.btn_TemplateFileSetting_Edit = new System.Windows.Forms.Button();
+            this.btn_TemplateFileSetting_New = new System.Windows.Forms.Button();
+            this.btn_TemplateFileSetting_Refresh = new System.Windows.Forms.Button();
+            this.dgv_TemplateFileSetting = new System.Windows.Forms.DataGridView();
+            this.groupbox_ProjectFolderSetting.SuspendLayout();
+            this.groupbox_TemplateFileSetting.SuspendLayout();
             this.groupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_TemplateFileSetting)).BeginInit();
             this.SuspendLayout();
             // 
-            // groupBox1
+            // groupbox_ProjectFolderSetting
             // 
-            this.groupBox1.Controls.Add(this.button1);
-            this.groupBox1.Controls.Add(this.textBox1);
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Location = new System.Drawing.Point(12, 12);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(776, 47);
-            this.groupBox1.TabIndex = 0;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "生成路径设置";
+            this.groupbox_ProjectFolderSetting.Controls.Add(this.btn_DefaultProjectFolder_Save);
+            this.groupbox_ProjectFolderSetting.Controls.Add(this.txtbox_DefaultProjectFolder);
+            this.groupbox_ProjectFolderSetting.Controls.Add(this.lab_DefaultProjectFolder);
+            this.groupbox_ProjectFolderSetting.Location = new System.Drawing.Point(12, 12);
+            this.groupbox_ProjectFolderSetting.Name = "groupbox_ProjectFolderSetting";
+            this.groupbox_ProjectFolderSetting.Size = new System.Drawing.Size(776, 47);
+            this.groupbox_ProjectFolderSetting.TabIndex = 0;
+            this.groupbox_ProjectFolderSetting.TabStop = false;
+            this.groupbox_ProjectFolderSetting.Text = "生成路径设置";
             // 
-            // label1
+            // btn_DefaultProjectFolder_Save
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 23);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(89, 12);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "默认生成路径：";
+            this.btn_DefaultProjectFolder_Save.Location = new System.Drawing.Point(507, 18);
+            this.btn_DefaultProjectFolder_Save.Name = "btn_DefaultProjectFolder_Save";
+            this.btn_DefaultProjectFolder_Save.Size = new System.Drawing.Size(75, 23);
+            this.btn_DefaultProjectFolder_Save.TabIndex = 2;
+            this.btn_DefaultProjectFolder_Save.Text = "保存";
+            this.btn_DefaultProjectFolder_Save.UseVisualStyleBackColor = true;
             // 
-            // textBox1
+            // txtbox_DefaultProjectFolder
             // 
-            this.textBox1.Location = new System.Drawing.Point(101, 20);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(400, 21);
-            this.textBox1.TabIndex = 1;
+            this.txtbox_DefaultProjectFolder.Location = new System.Drawing.Point(101, 20);
+            this.txtbox_DefaultProjectFolder.Name = "txtbox_DefaultProjectFolder";
+            this.txtbox_DefaultProjectFolder.Size = new System.Drawing.Size(400, 21);
+            this.txtbox_DefaultProjectFolder.TabIndex = 1;
             // 
-            // button1
+            // lab_DefaultProjectFolder
             // 
-            this.button1.Location = new System.Drawing.Point(507, 18);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "保存";
-            this.button1.UseVisualStyleBackColor = true;
+            this.lab_DefaultProjectFolder.AutoSize = true;
+            this.lab_DefaultProjectFolder.Location = new System.Drawing.Point(6, 23);
+            this.lab_DefaultProjectFolder.Name = "lab_DefaultProjectFolder";
+            this.lab_DefaultProjectFolder.Size = new System.Drawing.Size(89, 12);
+            this.lab_DefaultProjectFolder.TabIndex = 0;
+            this.lab_DefaultProjectFolder.Text = "默认生成路径：";
             // 
-            // groupBox2
+            // groupbox_TemplateFileSetting
             // 
-            this.groupBox2.Controls.Add(this.groupBox3);
-            this.groupBox2.Controls.Add(this.button5);
-            this.groupBox2.Controls.Add(this.button4);
-            this.groupBox2.Controls.Add(this.button3);
-            this.groupBox2.Controls.Add(this.button2);
-            this.groupBox2.Controls.Add(this.dataGridView1);
-            this.groupBox2.Location = new System.Drawing.Point(12, 65);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(776, 373);
-            this.groupBox2.TabIndex = 1;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "模板文件设置";
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(6, 49);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowTemplate.Height = 23;
-            this.dataGridView1.Size = new System.Drawing.Size(764, 318);
-            this.dataGridView1.TabIndex = 0;
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(6, 20);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "刷新";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(87, 20);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 2;
-            this.button3.Text = "新增";
-            this.button3.UseVisualStyleBackColor = true;
-            // 
-            // button4
-            // 
-            this.button4.Location = new System.Drawing.Point(168, 20);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 23);
-            this.button4.TabIndex = 3;
-            this.button4.Text = "编辑";
-            this.button4.UseVisualStyleBackColor = true;
-            // 
-            // button5
-            // 
-            this.button5.Location = new System.Drawing.Point(249, 20);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(75, 23);
-            this.button5.TabIndex = 4;
-            this.button5.Text = "删除";
-            this.button5.UseVisualStyleBackColor = true;
+            this.groupbox_TemplateFileSetting.Controls.Add(this.groupBox3);
+            this.groupbox_TemplateFileSetting.Controls.Add(this.btn_TemplateFileSetting_Del);
+            this.groupbox_TemplateFileSetting.Controls.Add(this.btn_TemplateFileSetting_Edit);
+            this.groupbox_TemplateFileSetting.Controls.Add(this.btn_TemplateFileSetting_New);
+            this.groupbox_TemplateFileSetting.Controls.Add(this.btn_TemplateFileSetting_Refresh);
+            this.groupbox_TemplateFileSetting.Controls.Add(this.dgv_TemplateFileSetting);
+            this.groupbox_TemplateFileSetting.Location = new System.Drawing.Point(12, 65);
+            this.groupbox_TemplateFileSetting.Name = "groupbox_TemplateFileSetting";
+            this.groupbox_TemplateFileSetting.Size = new System.Drawing.Size(776, 373);
+            this.groupbox_TemplateFileSetting.TabIndex = 1;
+            this.groupbox_TemplateFileSetting.TabStop = false;
+            this.groupbox_TemplateFileSetting.Text = "模板文件设置";
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.button7);
-            this.groupBox3.Controls.Add(this.button6);
-            this.groupBox3.Controls.Add(this.textBox5);
-            this.groupBox3.Controls.Add(this.label5);
-            this.groupBox3.Controls.Add(this.textBox4);
-            this.groupBox3.Controls.Add(this.label4);
-            this.groupBox3.Controls.Add(this.textBox3);
-            this.groupBox3.Controls.Add(this.label3);
-            this.groupBox3.Controls.Add(this.textBox2);
-            this.groupBox3.Controls.Add(this.label2);
+            this.groupBox3.Controls.Add(this.btn_TemplateFileSetting_Cancel);
+            this.groupBox3.Controls.Add(this.btn_TemplateFileSetting_Save);
+            this.groupBox3.Controls.Add(this.txtbox_TemplateFileSetting_Remark);
+            this.groupBox3.Controls.Add(this.lab_TemplateFileSetting_Remark);
+            this.groupBox3.Controls.Add(this.txtbox_TemplateFileSetting_Path);
+            this.groupBox3.Controls.Add(this.lab_TemplateFileSetting_Path);
+            this.groupBox3.Controls.Add(this.txtbox_TemplateFileSetting_Name);
+            this.groupBox3.Controls.Add(this.lab_TemplateFileSetting_Name);
+            this.groupBox3.Controls.Add(this.txtbox_TemplateFileSetting_Num);
+            this.groupBox3.Controls.Add(this.lab_TemplateFileSetting_Num);
             this.groupBox3.Location = new System.Drawing.Point(6, 49);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(764, 68);
             this.groupBox3.TabIndex = 5;
             this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "groupBox3";
             // 
-            // label2
+            // btn_TemplateFileSetting_Cancel
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 17);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(89, 12);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "模板文件编码：";
+            this.btn_TemplateFileSetting_Cancel.Location = new System.Drawing.Point(582, 39);
+            this.btn_TemplateFileSetting_Cancel.Name = "btn_TemplateFileSetting_Cancel";
+            this.btn_TemplateFileSetting_Cancel.Size = new System.Drawing.Size(75, 23);
+            this.btn_TemplateFileSetting_Cancel.TabIndex = 9;
+            this.btn_TemplateFileSetting_Cancel.Text = "取消";
+            this.btn_TemplateFileSetting_Cancel.UseVisualStyleBackColor = true;
+            this.btn_TemplateFileSetting_Cancel.Click += new System.EventHandler(this.btn_TemplateFileSetting_Cancel_Click);
             // 
-            // textBox2
+            // btn_TemplateFileSetting_Save
             // 
-            this.textBox2.Location = new System.Drawing.Point(101, 14);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(146, 21);
-            this.textBox2.TabIndex = 1;
+            this.btn_TemplateFileSetting_Save.Location = new System.Drawing.Point(501, 39);
+            this.btn_TemplateFileSetting_Save.Name = "btn_TemplateFileSetting_Save";
+            this.btn_TemplateFileSetting_Save.Size = new System.Drawing.Size(75, 23);
+            this.btn_TemplateFileSetting_Save.TabIndex = 8;
+            this.btn_TemplateFileSetting_Save.Text = "保存";
+            this.btn_TemplateFileSetting_Save.UseVisualStyleBackColor = true;
             // 
-            // label3
+            // txtbox_TemplateFileSetting_Remark
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(253, 17);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(89, 12);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "模板文件名称：";
+            this.txtbox_TemplateFileSetting_Remark.Location = new System.Drawing.Point(596, 14);
+            this.txtbox_TemplateFileSetting_Remark.Name = "txtbox_TemplateFileSetting_Remark";
+            this.txtbox_TemplateFileSetting_Remark.Size = new System.Drawing.Size(162, 21);
+            this.txtbox_TemplateFileSetting_Remark.TabIndex = 7;
             // 
-            // textBox3
+            // lab_TemplateFileSetting_Remark
             // 
-            this.textBox3.Location = new System.Drawing.Point(348, 14);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(147, 21);
-            this.textBox3.TabIndex = 3;
+            this.lab_TemplateFileSetting_Remark.AutoSize = true;
+            this.lab_TemplateFileSetting_Remark.Location = new System.Drawing.Point(501, 17);
+            this.lab_TemplateFileSetting_Remark.Name = "lab_TemplateFileSetting_Remark";
+            this.lab_TemplateFileSetting_Remark.Size = new System.Drawing.Size(89, 12);
+            this.lab_TemplateFileSetting_Remark.TabIndex = 6;
+            this.lab_TemplateFileSetting_Remark.Text = "模板文件备注：";
             // 
-            // label4
+            // txtbox_TemplateFileSetting_Path
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(6, 44);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(89, 12);
-            this.label4.TabIndex = 4;
-            this.label4.Text = "模板文件路径：";
+            this.txtbox_TemplateFileSetting_Path.Location = new System.Drawing.Point(101, 41);
+            this.txtbox_TemplateFileSetting_Path.Name = "txtbox_TemplateFileSetting_Path";
+            this.txtbox_TemplateFileSetting_Path.Size = new System.Drawing.Size(394, 21);
+            this.txtbox_TemplateFileSetting_Path.TabIndex = 5;
             // 
-            // textBox4
+            // lab_TemplateFileSetting_Path
             // 
-            this.textBox4.Location = new System.Drawing.Point(101, 41);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(394, 21);
-            this.textBox4.TabIndex = 5;
+            this.lab_TemplateFileSetting_Path.AutoSize = true;
+            this.lab_TemplateFileSetting_Path.Location = new System.Drawing.Point(6, 44);
+            this.lab_TemplateFileSetting_Path.Name = "lab_TemplateFileSetting_Path";
+            this.lab_TemplateFileSetting_Path.Size = new System.Drawing.Size(89, 12);
+            this.lab_TemplateFileSetting_Path.TabIndex = 4;
+            this.lab_TemplateFileSetting_Path.Text = "模板文件路径：";
             // 
-            // label5
+            // txtbox_TemplateFileSetting_Name
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(501, 17);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(89, 12);
-            this.label5.TabIndex = 6;
-            this.label5.Text = "模板文件备注：";
+            this.txtbox_TemplateFileSetting_Name.Location = new System.Drawing.Point(348, 14);
+            this.txtbox_TemplateFileSetting_Name.Name = "txtbox_TemplateFileSetting_Name";
+            this.txtbox_TemplateFileSetting_Name.Size = new System.Drawing.Size(147, 21);
+            this.txtbox_TemplateFileSetting_Name.TabIndex = 3;
             // 
-            // textBox5
+            // lab_TemplateFileSetting_Name
             // 
-            this.textBox5.Location = new System.Drawing.Point(596, 14);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(162, 21);
-            this.textBox5.TabIndex = 7;
+            this.lab_TemplateFileSetting_Name.AutoSize = true;
+            this.lab_TemplateFileSetting_Name.Location = new System.Drawing.Point(253, 17);
+            this.lab_TemplateFileSetting_Name.Name = "lab_TemplateFileSetting_Name";
+            this.lab_TemplateFileSetting_Name.Size = new System.Drawing.Size(89, 12);
+            this.lab_TemplateFileSetting_Name.TabIndex = 2;
+            this.lab_TemplateFileSetting_Name.Text = "模板文件名称：";
             // 
-            // button6
+            // txtbox_TemplateFileSetting_Num
             // 
-            this.button6.Location = new System.Drawing.Point(501, 39);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(75, 23);
-            this.button6.TabIndex = 8;
-            this.button6.Text = "保存";
-            this.button6.UseVisualStyleBackColor = true;
+            this.txtbox_TemplateFileSetting_Num.Location = new System.Drawing.Point(101, 14);
+            this.txtbox_TemplateFileSetting_Num.Name = "txtbox_TemplateFileSetting_Num";
+            this.txtbox_TemplateFileSetting_Num.Size = new System.Drawing.Size(146, 21);
+            this.txtbox_TemplateFileSetting_Num.TabIndex = 1;
             // 
-            // button7
+            // lab_TemplateFileSetting_Num
             // 
-            this.button7.Location = new System.Drawing.Point(582, 39);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(75, 23);
-            this.button7.TabIndex = 9;
-            this.button7.Text = "取消";
-            this.button7.UseVisualStyleBackColor = true;
+            this.lab_TemplateFileSetting_Num.AutoSize = true;
+            this.lab_TemplateFileSetting_Num.Location = new System.Drawing.Point(6, 17);
+            this.lab_TemplateFileSetting_Num.Name = "lab_TemplateFileSetting_Num";
+            this.lab_TemplateFileSetting_Num.Size = new System.Drawing.Size(89, 12);
+            this.lab_TemplateFileSetting_Num.TabIndex = 0;
+            this.lab_TemplateFileSetting_Num.Text = "模板文件编码：";
+            // 
+            // btn_TemplateFileSetting_Del
+            // 
+            this.btn_TemplateFileSetting_Del.Location = new System.Drawing.Point(249, 20);
+            this.btn_TemplateFileSetting_Del.Name = "btn_TemplateFileSetting_Del";
+            this.btn_TemplateFileSetting_Del.Size = new System.Drawing.Size(75, 23);
+            this.btn_TemplateFileSetting_Del.TabIndex = 4;
+            this.btn_TemplateFileSetting_Del.Text = "删除";
+            this.btn_TemplateFileSetting_Del.UseVisualStyleBackColor = true;
+            // 
+            // btn_TemplateFileSetting_Edit
+            // 
+            this.btn_TemplateFileSetting_Edit.Location = new System.Drawing.Point(168, 20);
+            this.btn_TemplateFileSetting_Edit.Name = "btn_TemplateFileSetting_Edit";
+            this.btn_TemplateFileSetting_Edit.Size = new System.Drawing.Size(75, 23);
+            this.btn_TemplateFileSetting_Edit.TabIndex = 3;
+            this.btn_TemplateFileSetting_Edit.Text = "编辑";
+            this.btn_TemplateFileSetting_Edit.UseVisualStyleBackColor = true;
+            // 
+            // btn_TemplateFileSetting_New
+            // 
+            this.btn_TemplateFileSetting_New.Location = new System.Drawing.Point(87, 20);
+            this.btn_TemplateFileSetting_New.Name = "btn_TemplateFileSetting_New";
+            this.btn_TemplateFileSetting_New.Size = new System.Drawing.Size(75, 23);
+            this.btn_TemplateFileSetting_New.TabIndex = 2;
+            this.btn_TemplateFileSetting_New.Text = "新增";
+            this.btn_TemplateFileSetting_New.UseVisualStyleBackColor = true;
+            // 
+            // btn_TemplateFileSetting_Refresh
+            // 
+            this.btn_TemplateFileSetting_Refresh.Location = new System.Drawing.Point(6, 20);
+            this.btn_TemplateFileSetting_Refresh.Name = "btn_TemplateFileSetting_Refresh";
+            this.btn_TemplateFileSetting_Refresh.Size = new System.Drawing.Size(75, 23);
+            this.btn_TemplateFileSetting_Refresh.TabIndex = 1;
+            this.btn_TemplateFileSetting_Refresh.Text = "刷新";
+            this.btn_TemplateFileSetting_Refresh.UseVisualStyleBackColor = true;
+            this.btn_TemplateFileSetting_Refresh.Click += new System.EventHandler(this.btn_TemplateFileSetting_Refresh_Click);
+            // 
+            // dgv_TemplateFileSetting
+            // 
+            this.dgv_TemplateFileSetting.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_TemplateFileSetting.Location = new System.Drawing.Point(6, 49);
+            this.dgv_TemplateFileSetting.Name = "dgv_TemplateFileSetting";
+            this.dgv_TemplateFileSetting.RowTemplate.Height = 23;
+            this.dgv_TemplateFileSetting.Size = new System.Drawing.Size(764, 318);
+            this.dgv_TemplateFileSetting.TabIndex = 0;
             // 
             // FrmSetting
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.groupbox_TemplateFileSetting);
+            this.Controls.Add(this.groupbox_ProjectFolderSetting);
             this.Name = "FrmSetting";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "FrmSetting";
+            this.Text = "设置";
             this.Load += new System.EventHandler(this.FrmSetting_Load);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.groupbox_ProjectFolderSetting.ResumeLayout(false);
+            this.groupbox_ProjectFolderSetting.PerformLayout();
+            this.groupbox_TemplateFileSetting.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_TemplateFileSetting)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.GroupBox groupbox_ProjectFolderSetting;
+        private System.Windows.Forms.Label lab_DefaultProjectFolder;
+        private System.Windows.Forms.TextBox txtbox_DefaultProjectFolder;
+        private System.Windows.Forms.Button btn_DefaultProjectFolder_Save;
+        private System.Windows.Forms.GroupBox groupbox_TemplateFileSetting;
+        private System.Windows.Forms.DataGridView dgv_TemplateFileSetting;
+        private System.Windows.Forms.Button btn_TemplateFileSetting_Refresh;
+        private System.Windows.Forms.Button btn_TemplateFileSetting_Del;
+        private System.Windows.Forms.Button btn_TemplateFileSetting_Edit;
+        private System.Windows.Forms.Button btn_TemplateFileSetting_New;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Label lab_TemplateFileSetting_Num;
+        private System.Windows.Forms.Label lab_TemplateFileSetting_Name;
+        private System.Windows.Forms.TextBox txtbox_TemplateFileSetting_Num;
+        private System.Windows.Forms.TextBox txtbox_TemplateFileSetting_Name;
+        private System.Windows.Forms.Label lab_TemplateFileSetting_Path;
+        private System.Windows.Forms.TextBox txtbox_TemplateFileSetting_Path;
+        private System.Windows.Forms.Label lab_TemplateFileSetting_Remark;
+        private System.Windows.Forms.TextBox txtbox_TemplateFileSetting_Remark;
+        private System.Windows.Forms.Button btn_TemplateFileSetting_Save;
+        private System.Windows.Forms.Button btn_TemplateFileSetting_Cancel;
     }
 }

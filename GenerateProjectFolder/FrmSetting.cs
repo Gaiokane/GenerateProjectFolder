@@ -22,11 +22,18 @@ namespace GenerateProjectFolder
             groupBox3.Visible = false;
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void btn_TemplateFileSetting_Refresh_Click(object sender, EventArgs e)
         {
-            dataGridView1.Height = 244;
-            dataGridView1.Location = new System.Drawing.Point(6, 123);
+            dgv_TemplateFileSetting.Height = 244;
+            dgv_TemplateFileSetting.Location = new System.Drawing.Point(6, 123);
             groupBox3.Visible = true;
+        }
+
+        private void btn_TemplateFileSetting_Cancel_Click(object sender, EventArgs e)
+        {
+            dgv_TemplateFileSetting.Height = 318;
+            dgv_TemplateFileSetting.Location = new System.Drawing.Point(6, 49);
+            groupBox3.Visible = false;
         }
     }
 }
