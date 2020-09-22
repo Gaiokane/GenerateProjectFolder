@@ -112,6 +112,7 @@
             this.btn_Generate.TabIndex = 8;
             this.btn_Generate.Text = "生成";
             this.btn_Generate.UseVisualStyleBackColor = true;
+            this.btn_Generate.Click += new System.EventHandler(this.btn_Generate_Click);
             // 
             // btn_Setting
             // 

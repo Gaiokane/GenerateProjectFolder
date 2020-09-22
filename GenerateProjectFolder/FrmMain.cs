@@ -17,15 +17,64 @@ namespace GenerateProjectFolder
             InitializeComponent();
         }
 
+        //窗体加载事件
+        private void FrmMain_Load(object sender, EventArgs e)
+        {
+            Helper.ConfigHelper.init();
+            txtbox_GenerateTo.Text = Helper.ConfigHelper.getappSettings("DefaultProjectFolder");
+            txtbox_ProjectNum.Select();
+        }
+
+        //生成按钮单击事件
+        private void btn_Generate_Click(object sender, EventArgs e)
+        {
+            string generateto = txtbox_GenerateTo.Text.Trim();
+            string projectnum = txtbox_ProjectNum.Text.Trim();
+            string projectname = txtbox_ProjectName.Text.Trim();
+            string projectabbreviation = txtbox_ProjectAbbreviation.Text.Trim();
+
+            //生成至为空
+            if (string.IsNullOrEmpty(generateto))
+            {
+                MessageBox.Show("生成至不能为空！");
+                txtbox_GenerateTo.Focus();
+            }
+            else
+            {
+                //项目编号为空
+                if (string.IsNullOrEmpty(projectnum))
+                {
+                    MessageBox.Show("项目编号不能为空！");
+                    txtbox_ProjectNum.Focus();
+                }
+                else
+                {
+                    //项目名称为空
+                    if (string.IsNullOrEmpty(projectname))
+                    {
+                        MessageBox.Show("项目名称不能为空！");
+                        txtbox_ProjectName.Focus();
+                    }
+                    else
+                    {
+                        //只有项目简称为空
+                        if (string.IsNullOrEmpty(projectabbreviation))
+                        {
+                            projectabbreviation = projectname;
+                        }
+
+                        //判空结束
+                        MessageBox.Show("判空结束" + projectabbreviation);
+                    }
+                }
+            }
+        }
+
+        //设置按钮单击事件
         private void btn_Setting_Click(object sender, EventArgs e)
         {
             FrmSetting fs = new FrmSetting();
             fs.Show();
-        }
-
-        private void FrmMain_Load(object sender, EventArgs e)
-        {
-            Helper.ConfigHelper.init();
         }
     }
 }

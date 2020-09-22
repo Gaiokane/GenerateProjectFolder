@@ -75,6 +75,7 @@
             this.btn_DefaultProjectFolder_Save.TabIndex = 2;
             this.btn_DefaultProjectFolder_Save.Text = "保存";
             this.btn_DefaultProjectFolder_Save.UseVisualStyleBackColor = true;
+            this.btn_DefaultProjectFolder_Save.Click += new System.EventHandler(this.btn_DefaultProjectFolder_Save_Click);
             // 
             // txtbox_DefaultProjectFolder
             // 
