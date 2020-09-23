@@ -55,6 +55,7 @@
             this.txtbox_GenerateTo.Name = "txtbox_GenerateTo";
             this.txtbox_GenerateTo.Size = new System.Drawing.Size(400, 21);
             this.txtbox_GenerateTo.TabIndex = 1;
+            this.txtbox_GenerateTo.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.txtbox_GenerateTo_MouseDoubleClick);
             // 
             // lab_ProjectNum
             // 

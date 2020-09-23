@@ -76,5 +76,15 @@ namespace GenerateProjectFolder
             FrmSetting fs = new FrmSetting();
             fs.Show();
         }
+
+        private void txtbox_GenerateTo_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            FolderBrowserDialog fbd = new FolderBrowserDialog();
+            if (fbd.ShowDialog() == DialogResult.OK)
+            {
+                txtbox_GenerateTo.Text = fbd.SelectedPath;
+                txtbox_GenerateTo.SelectionStart = txtbox_GenerateTo.Text.Length;
+            }
+        }
     }
 }

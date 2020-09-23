@@ -83,6 +83,7 @@
             this.txtbox_DefaultProjectFolder.Name = "txtbox_DefaultProjectFolder";
             this.txtbox_DefaultProjectFolder.Size = new System.Drawing.Size(400, 21);
             this.txtbox_DefaultProjectFolder.TabIndex = 1;
+            this.txtbox_DefaultProjectFolder.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.txtbox_DefaultProjectFolder_MouseDoubleClick);
             // 
             // lab_DefaultProjectFolder
             // 
@@ -167,6 +168,7 @@
             this.txtbox_TemplateFileSetting_Path.Name = "txtbox_TemplateFileSetting_Path";
             this.txtbox_TemplateFileSetting_Path.Size = new System.Drawing.Size(394, 21);
             this.txtbox_TemplateFileSetting_Path.TabIndex = 5;
+            this.txtbox_TemplateFileSetting_Path.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.txtbox_TemplateFileSetting_Path_MouseDoubleClick);
             // 
             // lab_TemplateFileSetting_Path
             // 

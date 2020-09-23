@@ -68,5 +68,28 @@ namespace GenerateProjectFolder
                 }
             }
         }
+
+        private void txtbox_DefaultProjectFolder_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            FolderBrowserDialog fbd = new FolderBrowserDialog();
+            if (fbd.ShowDialog() == DialogResult.OK)
+            {
+                txtbox_DefaultProjectFolder.Text = fbd.SelectedPath;
+                txtbox_DefaultProjectFolder.SelectionStart = txtbox_DefaultProjectFolder.Text.Length;
+            }
+        }
+
+        private void txtbox_TemplateFileSetting_Path_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            OpenFileDialog ofd = new OpenFileDialog();
+            ofd.Title = "选择模板文件";
+            ofd.Filter = "所有文件(*.*)|*.*";
+            ofd.InitialDirectory = @"E:\";
+            ofd.RestoreDirectory = true;
+            if (ofd.ShowDialog() == DialogResult.OK)
+            {
+                txtbox_TemplateFileSetting_Path.Text = ofd.FileName;
+            }
+        }
     }
 }
