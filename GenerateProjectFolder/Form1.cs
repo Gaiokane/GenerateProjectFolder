@@ -36,33 +36,33 @@ namespace GenerateProjectFolder
          * 6.
          * 7.
          * ———————窗体设计———————
-         * 1.主窗体（生成至：[label、textbox]、路径选择[button]、项目编号[label、textbox]、项目名称[label、textbox]、项目简称[label、textbox]、生成[button]、设置[button]）
-         * 2.主窗体—设置窗体（生成路径设置、模板文件设置）
-         * 3.设置窗体—生成路径设置（功能组合[groupbox]、默认生成路径[label]、默认生成路径[textbox]、保存[button]）
-         * 4.设置窗体—模板文件设置（功能组合[groupbox]、刷新[button]、新增[button]、编辑[button]、删除[button]、列表[datagridview]：模板文件编码、模板文件名称、模板文件路径、模板文件备注）
-         * 5.模板文件设置—新增/编辑（模板文件编码[label、textbox]、模板文件名称[label、textbox]、模板文件路径[label、textbox]、路径选择[button]、模板文件备注[label、richtextbox]、保存[button]、取消[button]）
+         * √1.主窗体（生成至：[label、textbox]、路径选择[button]、项目编号[label、textbox]、项目名称[label、textbox]、项目简称[label、textbox]、生成[button]、设置[button]）
+         * √2.主窗体—设置窗体（生成路径设置、模板文件设置）
+         * √3.设置窗体—生成路径设置（功能组合[groupbox]、默认生成路径[label]、默认生成路径[textbox]、保存[button]）
+         * √4.设置窗体—模板文件设置（功能组合[groupbox]、刷新[button]、新增[button]、编辑[button]、删除[button]、列表[datagridview]：模板文件编码、模板文件名称、模板文件路径、模板文件备注）
+         * √5.模板文件设置—新增/编辑（模板文件编码[label、textbox]、模板文件名称[label、textbox]、模板文件路径[label、textbox]、路径选择[button]、模板文件备注[label、richtextbox]、保存[button]、取消[button]）
          * 6.
          * 7.
          * 备注：
          * 1.项目简称：用在 xx缺陷截图、xx问题.txt、xx估算、xx项目测试进度 等
          * ———————通用方法设计———————
-         * 1.配置文件默认值设置方法（对不存在的key进行新增）——[ConfigHelper.cs]init()
-         * 2.是否存在[配置文件中的key]——[ConfigHelper.cs]IsappSettingsExists(string key)
-         * 3.新增配置方法（传入key、value）——[ConfigHelper.cs]addappSettings(string key, string value)
-         * 4.编辑配置方法（传入key、value）——[ConfigHelper.cs]editappSettings(string key, string value)
-         * 5.删除配置方法（传入key）——[ConfigHelper.cs]delappSettings(string key)
-         * 6.查询配置方法（传入key）——[ConfigHelper.cs]getappSettings(string key)
-         * 7.是否指定文件夹——[FileHelper.cs]IsDirectoryExists(string path)
-         * 8.新建文件夹——[FileHelper.cs]CreateNewDirectory(string path)
-         * 9.是否存在指定文件——[FileHelper.cs]IsFileExists(string fileName)
-         * 10.复制文件——[FileHelper.cs]CopyFileTo(string source, string dest)
-         * 11.重命名/移动文件/目录——[FileHelper.cs]MoveFileTo(string source, string dest)
-         * 12.文件是否在使用——[FileHelper.cs]IsFileInUsed(string fileName)
-         * 13.文件操作类-新建文件，如新建txt并写入——[FileHelper.cs]CreateNewFile(string fileName, string content)
-         * 14.文件操作类-读取excel——[ExcelHelper.cs]ReadExcel(string filePath, int sheetIndex)
-         * 15.文件操作类-读取excel指定单元格——[ExcelHelper.cs]ReadExcelByCell(string filePath, int sheetIndex, int row, int cell)
-         * 16.文件操作类-修改excel指定单元格——[ExcelHelper.cs]ModifyExcelByCell(string filePath, int sheetIndex, int row, int cell, string cellValue)
-         * 17.获取指定日期测试版本号——[CommonHelper.cs]GetTestVersionNum(DateTime dt)
+         * √1.配置文件默认值设置方法（对不存在的key进行新增）——[ConfigHelper.cs]init()
+         * √2.是否存在[配置文件中的key]——[ConfigHelper.cs]IsappSettingsExists(string key)
+         * √3.新增配置方法（传入key、value）——[ConfigHelper.cs]addappSettings(string key, string value)
+         * √4.编辑配置方法（传入key、value）——[ConfigHelper.cs]editappSettings(string key, string value)
+         * √5.删除配置方法（传入key）——[ConfigHelper.cs]delappSettings(string key)
+         * √6.查询配置方法（传入key）——[ConfigHelper.cs]getappSettings(string key)
+         * √7.是否指定文件夹——[FileHelper.cs]IsDirectoryExists(string path)
+         * √8.新建文件夹——[FileHelper.cs]CreateNewDirectory(string path)
+         * √9.是否存在指定文件——[FileHelper.cs]IsFileExists(string fileName)
+         * √10.复制文件——[FileHelper.cs]CopyFileTo(string source, string dest)
+         * √11.重命名/移动文件/目录——[FileHelper.cs]MoveFileTo(string source, string dest)
+         * √12.文件是否在使用——[FileHelper.cs]IsFileInUsed(string fileName)
+         * √13.文件操作类-新建文件，如新建txt并写入——[FileHelper.cs]CreateNewFile(string fileName, string content)
+         * √14.文件操作类-读取excel——[ExcelHelper.cs]ReadExcel(string filePath, int sheetIndex)
+         * √15.文件操作类-读取excel指定单元格——[ExcelHelper.cs]ReadExcelByCell(string filePath, int sheetIndex, int row, int cell)
+         * √16.文件操作类-修改excel指定单元格——[ExcelHelper.cs]ModifyExcelByCell(string filePath, int sheetIndex, int row, int cell, string cellValue)
+         * √17.获取指定日期测试版本号——[CommonHelper.cs]GetTestVersionNum(DateTime dt)
          * 18.
          * 19.
          * 备注：

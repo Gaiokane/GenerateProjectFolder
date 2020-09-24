@@ -77,6 +77,7 @@ namespace GenerateProjectFolder
             fs.Show();
         }
 
+        //生成至文本框双击事件，选择生成至目录
         private void txtbox_GenerateTo_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             FolderBrowserDialog fbd = new FolderBrowserDialog();

@@ -12,6 +12,9 @@ namespace GenerateProjectFolder
 {
     public partial class FrmSetting : Form
     {
+        //模板文件设置-是否点击新增/编辑按钮 0=初始,1=新增,2=编辑
+        int TemplateFileSettingBtnStatus = 0;
+
         public FrmSetting()
         {
             InitializeComponent();
@@ -31,11 +34,65 @@ namespace GenerateProjectFolder
         //模板文件设置-刷新按钮单击事件
         private void btn_TemplateFileSetting_Refresh_Click(object sender, EventArgs e)
         {
+
+        }
+
+        //模板文件设置-新增按钮单击事件
+        private void btn_TemplateFileSetting_New_Click(object sender, EventArgs e)
+        {
             //设置dgv大小，以显示[模板文件设置]->新增/编辑部分
             dgv_TemplateFileSetting.Height = 244;
             dgv_TemplateFileSetting.Location = new System.Drawing.Point(6, 123);
             //显示[模板文件设置->新增/编辑部分]
             groupBox3.Visible = true;
+
+            //新增操作 文本框置空
+            txtbox_TemplateFileSetting_Num.Text = "";
+            txtbox_TemplateFileSetting_Name.Text = "";
+            txtbox_TemplateFileSetting_Remark.Text = "";
+            txtbox_TemplateFileSetting_Path.Text = "";
+
+            //模板文件设置-是否点击新增/编辑按钮 0=初始,1=新增,2=编辑
+            TemplateFileSettingBtnStatus = 1;
+        }
+
+        //模板文件设置-编辑按钮单击事件
+        private void btn_TemplateFileSetting_Edit_Click(object sender, EventArgs e)
+        {
+            if (dgv_TemplateFileSetting.Rows.Count == 0)
+            {
+                MessageBox.Show("没有可编辑的记录！");
+            }
+            else
+            {
+                if (dgv_TemplateFileSetting.SelectedRows.Count == 0)
+                {
+                    MessageBox.Show("请选择要编辑的记录！");
+                }
+                else
+                {
+                    //设置dgv大小，以显示[模板文件设置]->新增/编辑部分
+                    dgv_TemplateFileSetting.Height = 244;
+                    dgv_TemplateFileSetting.Location = new System.Drawing.Point(6, 123);
+                    //显示[模板文件设置->新增/编辑部分]
+                    groupBox3.Visible = true;
+
+                    //编辑操作-文本框取所选行数据
+                    txtbox_TemplateFileSetting_Num.Text = "";
+                    txtbox_TemplateFileSetting_Name.Text = "";
+                    txtbox_TemplateFileSetting_Remark.Text = "";
+                    txtbox_TemplateFileSetting_Path.Text = "";
+
+                    //模板文件设置-是否点击新增/编辑按钮 0=初始,1=新增,2=编辑
+                    TemplateFileSettingBtnStatus = 2;
+                }
+            }
+        }
+
+        //模板文件设置-刷新按钮单击事件
+        private void btn_TemplateFileSetting_Del_Click(object sender, EventArgs e)
+        {
+
         }
 
         //模板文件设置-[新增/编辑]->取消按钮单击事件
@@ -46,6 +103,58 @@ namespace GenerateProjectFolder
             dgv_TemplateFileSetting.Location = new System.Drawing.Point(6, 49);
             //隐藏[模板文件设置->新增/编辑部分]
             groupBox3.Visible = false;
+        }
+
+        //模板文件设置-[新增/编辑]->保存按钮单击事件
+        private void btn_TemplateFileSetting_Save_Click(object sender, EventArgs e)
+        {
+            //模板文件编码
+            string num = txtbox_TemplateFileSetting_Num.Text.Trim();
+            //模板文件名称
+            string name = txtbox_TemplateFileSetting_Name.Text.Trim();
+            //模板文件路径
+            string path = txtbox_TemplateFileSetting_Path.Text.Trim();
+            //模板文件备注
+            string remark = txtbox_TemplateFileSetting_Remark.Text.Trim();
+
+            //模板文件编码为空
+            if (string.IsNullOrEmpty(num))
+            {
+                MessageBox.Show("请输入模板文件编码！");
+                txtbox_TemplateFileSetting_Num.Focus();
+            }
+            else
+            {
+                //模板文件名称为空
+                if (string.IsNullOrEmpty(name))
+                {
+                    MessageBox.Show("请输入模板文件名称！");
+                    txtbox_TemplateFileSetting_Name.Focus();
+                }
+                else
+                {
+                    //模板文件路径为空
+                    if (string.IsNullOrEmpty(path))
+                    {
+                        MessageBox.Show("请输入模板文件路径！");
+                        txtbox_TemplateFileSetting_Path.Focus();
+                    }
+                    else
+                    {
+                        //模板文件设置-是否点击新增/编辑按钮 0=初始,1=新增,2=编辑
+                        //新增
+                        if (TemplateFileSettingBtnStatus == 1)
+                        {
+                            //判断是否有重复值
+                        }
+                        //编辑
+                        if (TemplateFileSettingBtnStatus == 2)
+                        {
+                            //判断是否有重复值
+                        }
+                    }
+                }
+            }
         }
 
         //生成路径设置-保存按钮单击事件
@@ -69,6 +178,7 @@ namespace GenerateProjectFolder
             }
         }
 
+        //默认生成路径文本框双击事件，选择默认生成目录
         private void txtbox_DefaultProjectFolder_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             FolderBrowserDialog fbd = new FolderBrowserDialog();
@@ -79,6 +189,7 @@ namespace GenerateProjectFolder
             }
         }
 
+        //模板文件路径文本框双击事件，选择模板文件
         private void txtbox_TemplateFileSetting_Path_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             OpenFileDialog ofd = new OpenFileDialog();

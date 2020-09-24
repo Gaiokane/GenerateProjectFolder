@@ -145,6 +145,7 @@
             this.btn_TemplateFileSetting_Save.TabIndex = 8;
             this.btn_TemplateFileSetting_Save.Text = "保存";
             this.btn_TemplateFileSetting_Save.UseVisualStyleBackColor = true;
+            this.btn_TemplateFileSetting_Save.Click += new System.EventHandler(this.btn_TemplateFileSetting_Save_Click);
             // 
             // txtbox_TemplateFileSetting_Remark
             // 
@@ -219,6 +220,7 @@
             this.btn_TemplateFileSetting_Del.TabIndex = 4;
             this.btn_TemplateFileSetting_Del.Text = "删除";
             this.btn_TemplateFileSetting_Del.UseVisualStyleBackColor = true;
+            this.btn_TemplateFileSetting_Del.Click += new System.EventHandler(this.btn_TemplateFileSetting_Del_Click);
             // 
             // btn_TemplateFileSetting_Edit
             // 
@@ -228,6 +230,7 @@
             this.btn_TemplateFileSetting_Edit.TabIndex = 3;
             this.btn_TemplateFileSetting_Edit.Text = "编辑";
             this.btn_TemplateFileSetting_Edit.UseVisualStyleBackColor = true;
+            this.btn_TemplateFileSetting_Edit.Click += new System.EventHandler(this.btn_TemplateFileSetting_Edit_Click);
             // 
             // btn_TemplateFileSetting_New
             // 
@@ -237,6 +240,7 @@
             this.btn_TemplateFileSetting_New.TabIndex = 2;
             this.btn_TemplateFileSetting_New.Text = "新增";
             this.btn_TemplateFileSetting_New.UseVisualStyleBackColor = true;
+            this.btn_TemplateFileSetting_New.Click += new System.EventHandler(this.btn_TemplateFileSetting_New_Click);
             // 
             // btn_TemplateFileSetting_Refresh
             // 
