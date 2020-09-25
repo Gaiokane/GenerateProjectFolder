@@ -102,6 +102,7 @@
     <Compile Include="Helper\ExcelHelper.cs" />
     <Compile Include="Helper\FileHelper.cs" />
     <Compile Include="Program.cs" />
+    <Compile Include="ProjectFilesConfig.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="DemoExcel.resx">
       <DependentUpon>DemoExcel.cs</DependentUpon>

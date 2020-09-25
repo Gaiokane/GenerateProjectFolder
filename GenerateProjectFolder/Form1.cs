@@ -27,6 +27,22 @@ namespace GenerateProjectFolder
          * 6.
          * 7.
          * 整体思路：
+         * ———————项目文件生成类———————
+         * 1.调用全部方法——[ProjectFilesConfig.cs]init()
+         * 2.文件夹_部署包——[ProjectFilesConfig.cs]folder_DeploymentPackage()
+         * 3.文件夹_测试用例——[ProjectFilesConfig.cs]folder_TestCase()
+         * 4.文件夹_缺陷截图——[ProjectFilesConfig.cs]folder_DefectScreenshot()
+         * 5.文件夹_文档备份——[ProjectFilesConfig.cs]folder_DocumentBackup()
+         * 6.文件夹_最终文档——[ProjectFilesConfig.cs]folder_FinalDocument()
+         * 7.Excel_系统测试用例——[ProjectFilesConfig.cs]excel_SystemTestCase()
+         * 8.Excel_测试服务器部署信息登记表——[ProjectFilesConfig.cs]excel_TestServerDeploymentInformation()
+         * 9.Excel_项目测试进度——[ProjectFilesConfig.cs]excel_ProjectTestProgress()
+         * 10.TXT_版本更新日志——[ProjectFilesConfig.cs]txt_VersionUpdateLog()
+         * 11.TXT_问题——[ProjectFilesConfig.cs]txt_Problem()
+         * 12.
+         * 13.
+         * 14.
+         * 15.
          * ———————配置文件———————
          * 1.<文件项> 存 文件路径键值对中的键，分号间隔。如<add key="FileName" value="FileName_01;FileName_02;FileName_03" />
          * 2.<文件路径> 存 文件路径，如<add key="FileName_01" value="D:/vs-program/GitHub/GenerateProjectFolder/GenerateProjectFolder.sln" />
