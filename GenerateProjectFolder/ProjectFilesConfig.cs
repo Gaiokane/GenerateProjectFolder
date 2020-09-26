@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GenerateProjectFolder.Helper;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,6 +14,8 @@ namespace GenerateProjectFolder
         {
             try
             {
+                //文件夹_项目文件夹
+                folder_ProjectFolder(null, null, null);
                 //文件夹_部署包
                 folder_DeploymentPackage();
                 //文件夹_测试用例
@@ -34,6 +37,36 @@ namespace GenerateProjectFolder
                 //TXT_问题
                 txt_Problem();
                 return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// 文件夹_项目文件夹
+        /// </summary>
+        /// <param name="Path">生成至路径</param>
+        /// <param name="ProjectNum">项目编号</param>
+        /// <param name="ProjectName">项目名称</param>
+        /// <returns>成功、失败（项目文件夹已存在）</returns>
+        private static bool folder_ProjectFolder(string Path, string ProjectNum, string ProjectName)
+        {
+            try
+            {
+                string generateto = Path + @"\" + ProjectNum + ProjectName;
+                if (FileHelper.IsDirectoryExists(generateto))
+                {
+                    //项目文件夹已存在
+                    return false;
+                }
+                else
+                {
+                    //项目文件夹不存在
+                    FileHelper.CreateNewDirectory(generateto);
+                    return true;
+                }
             }
             catch (Exception)
             {
