@@ -64,7 +64,8 @@ namespace GenerateProjectFolder
                         }
 
                         //判空结束
-                        MessageBox.Show("判空结束" + projectabbreviation);
+                        //MessageBox.Show("判空结束" + projectabbreviation);
+                        ProjectFilesConfig.init(generateto, projectnum, projectname);
                     }
                 }
             }

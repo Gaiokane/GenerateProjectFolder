@@ -9,15 +9,18 @@ namespace GenerateProjectFolder
 {
     class ProjectFilesConfig
     {
+        //项目文件夹路径
+        private static string projectfolderpath = null;
+
         //调用以下所有方法
-        public static bool init()
+        public static bool init(string GenerateToPath, string ProjectNum, string ProjectName)
         {
             try
             {
                 //文件夹_项目文件夹
-                folder_ProjectFolder(null, null, null);
+                folder_ProjectFolder(GenerateToPath, ProjectNum, ProjectName);
                 //文件夹_部署包
-                folder_DeploymentPackage();
+                folder_DeploymentPackage(projectfolderpath);
                 //文件夹_测试用例
                 folder_TestCase();
                 //文件夹_缺陷截图
@@ -47,15 +50,15 @@ namespace GenerateProjectFolder
         /// <summary>
         /// 文件夹_项目文件夹
         /// </summary>
-        /// <param name="Path">生成至路径</param>
+        /// <param name="GenerateToPath">生成至路径</param>
         /// <param name="ProjectNum">项目编号</param>
         /// <param name="ProjectName">项目名称</param>
         /// <returns>成功、失败（项目文件夹已存在）</returns>
-        private static bool folder_ProjectFolder(string Path, string ProjectNum, string ProjectName)
+        private static bool folder_ProjectFolder(string GenerateToPath, string ProjectNum, string ProjectName)
         {
             try
             {
-                string generateto = Path + @"\" + ProjectNum + ProjectName;
+                string generateto = GenerateToPath + @"\" + ProjectNum + ProjectName;
                 if (FileHelper.IsDirectoryExists(generateto))
                 {
                     //项目文件夹已存在
@@ -65,6 +68,8 @@ namespace GenerateProjectFolder
                 {
                     //项目文件夹不存在
                     FileHelper.CreateNewDirectory(generateto);
+                    //赋值给全局变量
+                    projectfolderpath = generateto;
                     return true;
                 }
             }
@@ -74,12 +79,27 @@ namespace GenerateProjectFolder
             }
         }
 
-        //文件夹_部署包
-        private static bool folder_DeploymentPackage()
+        /// <summary>
+        /// 文件夹_部署包
+        /// </summary>
+        /// <param name="ProjectFolderPath">项目文件夹路径</param>
+        /// <returns>成功、失败（新建文件夹失败，文件夹已存在被占用）</returns>
+        private static bool folder_DeploymentPackage(string ProjectFolderPath)
         {
             try
             {
-                return true;
+                //建项目文件夹时判断了是否存在相同文件夹，此处无需判断
+                if (string.IsNullOrEmpty(ProjectFolderPath))
+                {
+                    //ProjectFolderPath判空
+                    return false;
+                }
+                else
+                {
+                    FileHelper.CreateNewDirectory(ProjectFolderPath + @"\部署包");
+                    FileHelper.CreateNewDirectory(ProjectFolderPath + @"\部署包\" + CommonHelper.GetTestVersionNum(DateTime.Now));
+                    return true;
+                }
             }
             catch (Exception)
             {
