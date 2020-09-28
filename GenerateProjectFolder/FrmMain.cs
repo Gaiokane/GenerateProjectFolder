@@ -65,7 +65,17 @@ namespace GenerateProjectFolder
 
                         //判空结束
                         //MessageBox.Show("判空结束" + projectabbreviation);
-                        ProjectFilesConfig.init(generateto, projectnum, projectname);
+                        if (ProjectFilesConfig.init(generateto, projectnum, projectname))
+                        {
+                            if (MessageBox.Show("是否打开？", "text", MessageBoxButtons.OKCancel) == DialogResult.OK)
+                            {
+                                System.Diagnostics.Process.Start(generateto + @"\" + projectnum + projectname);
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("生成失败！");
+                        }
                     }
                 }
             }
@@ -74,8 +84,15 @@ namespace GenerateProjectFolder
         //设置按钮单击事件
         private void btn_Setting_Click(object sender, EventArgs e)
         {
+            //设置只能打开一个，配合窗体中中的Get窗体名()设置
+            FrmSetting.GetFrmSetting().Activate();
+
+            //接收窗体FormClosed事件返回的DialogResult，执行相应操作
             FrmSetting fs = new FrmSetting();
-            fs.Show();
+            if (fs.ShowDialog() == DialogResult.OK)
+            {
+                txtbox_GenerateTo.Text = Helper.ConfigHelper.getappSettings("DefaultProjectFolder");
+            }
         }
 
         //生成至文本框双击事件，选择生成至目录

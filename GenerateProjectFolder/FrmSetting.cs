@@ -202,5 +202,26 @@ namespace GenerateProjectFolder
                 txtbox_TemplateFileSetting_Path.Text = ofd.FileName;
             }
         }
+
+        //设置该窗口只能打开一个，配合前一窗体中按钮设置
+        private static FrmSetting fs = new FrmSetting();
+        public static FrmSetting GetFrmSetting()
+        {
+            if (fs.IsDisposed)
+            {
+                fs = new FrmSetting();
+                return fs;
+            }
+            else
+            {
+                return fs;
+            }
+        }
+
+        //窗体关闭时返回一个DialogResult，前一窗体接收返回值
+        private void FrmSetting_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            this.DialogResult = DialogResult.OK;
+        }
     }
 }

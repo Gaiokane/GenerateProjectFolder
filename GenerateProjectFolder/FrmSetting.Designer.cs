@@ -271,6 +271,7 @@
             this.Name = "FrmSetting";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "设置";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmSetting_FormClosed);
             this.Load += new System.EventHandler(this.FrmSetting_Load);
             this.groupbox_ProjectFolderSetting.ResumeLayout(false);
             this.groupbox_ProjectFolderSetting.PerformLayout();
