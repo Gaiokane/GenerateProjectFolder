@@ -65,7 +65,7 @@ namespace GenerateProjectFolder
 
                         //判空结束
                         //MessageBox.Show("判空结束" + projectabbreviation);
-                        if (ProjectFilesConfig.init(generateto, projectnum, projectname))
+                        if (ProjectFilesConfig.init(generateto, projectnum, projectname, projectabbreviation))
                         {
                             if (MessageBox.Show("是否打开？", "text", MessageBoxButtons.OKCancel) == DialogResult.OK)
                             {

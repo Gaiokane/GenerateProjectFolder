@@ -11,24 +11,30 @@ namespace GenerateProjectFolder
     {
         //项目文件夹路径
         private static string projectfolderpath = null;
+        //项目编号
+        private static string projectnum = null;
+        //项目名称
+        private static string projectname = null;
+        //项目简称
+        private static string projectabbreviation = null;
 
         //调用以下所有方法
-        public static bool init(string GenerateToPath, string ProjectNum, string ProjectName)
+        public static bool init(string GenerateToPath, string ProjectNum, string ProjectName, string ProjectAbbreviation)
         {
             try
             {
                 //文件夹_项目文件夹
-                folder_ProjectFolder(GenerateToPath, ProjectNum, ProjectName);
+                folder_ProjectFolder(GenerateToPath, ProjectNum, ProjectName, ProjectAbbreviation);
                 //文件夹_部署包
                 folder_DeploymentPackage(projectfolderpath);
                 //文件夹_测试用例
-                folder_TestCase();
+                folder_TestCase(projectfolderpath);
                 //文件夹_缺陷截图
-                folder_DefectScreenshot();
+                folder_DefectScreenshot(projectfolderpath);
                 //文件夹_文档备份
-                folder_DocumentBackup();
+                folder_DocumentBackup(projectfolderpath);
                 //文件夹_最终文档
-                folder_FinalDocument();
+                folder_FinalDocument(projectfolderpath);
                 //Excel_系统测试用例
                 excel_SystemTestCase();
                 //Excel_测试服务器部署信息登记表
@@ -53,8 +59,9 @@ namespace GenerateProjectFolder
         /// <param name="GenerateToPath">生成至路径</param>
         /// <param name="ProjectNum">项目编号</param>
         /// <param name="ProjectName">项目名称</param>
+        /// <param name="ProjectAbbreviation">项目简称</param>
         /// <returns>成功、失败（项目文件夹已存在）</returns>
-        private static bool folder_ProjectFolder(string GenerateToPath, string ProjectNum, string ProjectName)
+        private static bool folder_ProjectFolder(string GenerateToPath, string ProjectNum, string ProjectName, string ProjectAbbreviation)
         {
             try
             {
@@ -68,8 +75,12 @@ namespace GenerateProjectFolder
                 {
                     //项目文件夹不存在
                     FileHelper.CreateNewDirectory(generateto);
+
                     //赋值给全局变量
                     projectfolderpath = generateto;
+                    projectnum = ProjectNum;
+                    projectname = ProjectName;
+                    projectabbreviation = ProjectAbbreviation;
                     return true;
                 }
             }
@@ -107,12 +118,26 @@ namespace GenerateProjectFolder
             }
         }
 
-        //文件夹_测试用例
-        private static bool folder_TestCase()
+        /// <summary>
+        /// 文件夹_测试用例
+        /// </summary>
+        /// <param name="ProjectFolderPath">项目文件夹路径</param>
+        /// <returns>成功、失败（新建文件夹失败，文件夹已存在被占用）</returns>
+        private static bool folder_TestCase(string ProjectFolderPath)
         {
             try
             {
-                return true;
+                //建项目文件夹时判断了是否存在相同文件夹，此处无需判断
+                if (string.IsNullOrEmpty(ProjectFolderPath))
+                {
+                    //ProjectFolderPath判空
+                    return false;
+                }
+                else
+                {
+                    FileHelper.CreateNewDirectory(ProjectFolderPath + @"\测试用例");
+                    return true;
+                }
             }
             catch (Exception)
             {
@@ -120,12 +145,26 @@ namespace GenerateProjectFolder
             }
         }
 
-        //文件夹_缺陷截图
-        private static bool folder_DefectScreenshot()
+        /// <summary>
+        /// 文件夹_缺陷截图
+        /// </summary>
+        /// <param name="ProjectFolderPath">项目文件夹路径</param>
+        /// <returns>成功、失败（新建文件夹失败，文件夹已存在被占用）</returns>
+        private static bool folder_DefectScreenshot(string ProjectFolderPath)
         {
             try
             {
-                return true;
+                //建项目文件夹时判断了是否存在相同文件夹，此处无需判断
+                if (string.IsNullOrEmpty(ProjectFolderPath))
+                {
+                    //ProjectFolderPath判空
+                    return false;
+                }
+                else
+                {
+                    FileHelper.CreateNewDirectory(ProjectFolderPath + @"\" + projectabbreviation + "缺陷截图");
+                    return true;
+                }
             }
             catch (Exception)
             {
@@ -133,12 +172,26 @@ namespace GenerateProjectFolder
             }
         }
 
-        //文件夹_文档备份
-        private static bool folder_DocumentBackup()
+        /// <summary>
+        /// 文件夹_文档备份
+        /// </summary>
+        /// <param name="ProjectFolderPath">项目文件夹路径</param>
+        /// <returns>成功、失败（新建文件夹失败，文件夹已存在被占用）</returns>
+        private static bool folder_DocumentBackup(string ProjectFolderPath)
         {
             try
             {
-                return true;
+                //建项目文件夹时判断了是否存在相同文件夹，此处无需判断
+                if (string.IsNullOrEmpty(ProjectFolderPath))
+                {
+                    //ProjectFolderPath判空
+                    return false;
+                }
+                else
+                {
+                    FileHelper.CreateNewDirectory(ProjectFolderPath + @"\文档备份");
+                    return true;
+                }
             }
             catch (Exception)
             {
@@ -146,12 +199,26 @@ namespace GenerateProjectFolder
             }
         }
 
-        //文件夹_最终文档
-        private static bool folder_FinalDocument()
+        /// <summary>
+        /// 文件夹_最终文档
+        /// </summary>
+        /// <param name="ProjectFolderPath">项目文件夹路径</param>
+        /// <returns>成功、失败（新建文件夹失败，文件夹已存在被占用）</returns>
+        private static bool folder_FinalDocument(string ProjectFolderPath)
         {
             try
             {
-                return true;
+                //建项目文件夹时判断了是否存在相同文件夹，此处无需判断
+                if (string.IsNullOrEmpty(ProjectFolderPath))
+                {
+                    //ProjectFolderPath判空
+                    return false;
+                }
+                else
+                {
+                    FileHelper.CreateNewDirectory(ProjectFolderPath + @"\最终文档");
+                    return true;
+                }
             }
             catch (Exception)
             {
