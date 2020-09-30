@@ -17,6 +17,10 @@ namespace GenerateProjectFolder
         private static string projectname = null;
         //项目简称
         private static string projectabbreviation = null;
+        //测试用例文件夹路径
+        private static string testcasefolderpath = null;
+        //测试用例路径
+        private static string testcasefilepath = null;
 
         //调用以下所有方法
         public static bool init(string GenerateToPath, string ProjectNum, string ProjectName, string ProjectAbbreviation)
@@ -136,6 +140,7 @@ namespace GenerateProjectFolder
                 else
                 {
                     FileHelper.CreateNewDirectory(ProjectFolderPath + @"\测试用例");
+                    testcasefolderpath = ProjectFolderPath + @"\测试用例";
                     return true;
                 }
             }
@@ -226,12 +231,39 @@ namespace GenerateProjectFolder
             }
         }
 
-        //Excel_系统测试用例
+        /// <summary>
+        /// Excel_系统测试用例
+        /// </summary>
+        /// <returns>成功、失败（文件不存在、文件被占用）</returns>
         private static bool excel_SystemTestCase()
         {
             try
             {
-                return true;
+                //读取配置文件中模板文件路径
+                string TestCaseTemplateFilePath = ConfigHelper.getappSettings("TestCaseTemplateFilePath");
+                //按“\”分割，取最后最后一个匹配项的索引位置
+                int index = TestCaseTemplateFilePath.LastIndexOf(@"\");
+                //取出上方索引位置+1开始至末尾的文件名
+                string TestCaseFileName = TestCaseTemplateFilePath.Substring(index + 1);
+                //测试用例文件路径
+                testcasefilepath = testcasefolderpath + @"\" + projectnum + TestCaseFileName;
+                //复制模板文件至项目文件测试用例路径下，并将模板文件名称修改为带项目编号的名称
+                if (FileHelper.CopyFileTo(TestCaseTemplateFilePath, testcasefilepath))
+                {
+                    //封面-项目名称
+                    ExcelHelper.ModifyExcelByCell(testcasefilepath, 0, 13, 1, projectname);
+                    //版本记录-项目名称
+                    ExcelHelper.ModifyExcelByCell(testcasefilepath, 1, 1, 5, projectname);
+                    //版本记录-1.文档属性-文档编号
+                    ExcelHelper.ModifyExcelByCell(testcasefilepath, 1, 5, 3, projectnum + "_ST_系统测试用例");
+                    //版本记录-2.版本历史-日期
+                    ExcelHelper.ModifyExcelByCell(testcasefilepath, 1, 11, 1, DateTime.Now.ToString("yyyy/MM/dd"));
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
             }
             catch (Exception)
             {
