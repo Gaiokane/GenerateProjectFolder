@@ -39,8 +39,8 @@ namespace GenerateProjectFolder
          * 9.Excel_项目测试进度——[ProjectFilesConfig.cs]excel_ProjectTestProgress()
          * 10.TXT_版本更新日志——[ProjectFilesConfig.cs]txt_VersionUpdateLog()
          * 11.TXT_问题——[ProjectFilesConfig.cs]txt_Problem()
-         * 12.
-         * 13.
+         * 12.项目文件夹在桌面建快捷方式
+         * 13.缺陷截图在桌面建快捷方式
          * 14.
          * 15.
          * ———————配置文件———————

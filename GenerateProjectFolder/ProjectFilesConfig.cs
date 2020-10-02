@@ -23,6 +23,8 @@ namespace GenerateProjectFolder
         private static string systemtestcasefilepath = null;
         //测试服务器部署信息登记表路径
         private static string testserverdeploymentinformationfilepath = null;
+        //项目测试进度路径
+        private static string projecttestprogressfilepath = null;
 
         //调用以下所有方法
         public static bool init(string GenerateToPath, string ProjectNum, string ProjectName, string ProjectAbbreviation)
@@ -309,12 +311,31 @@ namespace GenerateProjectFolder
             }
         }
 
-        //Excel_项目测试进度
+        /// <summary>
+        /// Excel_项目测试进度
+        /// </summary>
+        /// <returns>成功、失败（文件不存在、文件被占用）</returns>
         private static bool excel_ProjectTestProgress()
         {
             try
             {
-                return true;
+                //读取配置文件中模板文件路径
+                string ProjectTestProgressTemplateFilePath = ConfigHelper.getappSettings("ProjectTestProgressTemplateFilePath");
+                //按“\”分割，取最后一个匹配项的索引位置
+                int index = ProjectTestProgressTemplateFilePath.LastIndexOf(@"\");
+                //取出上方索引位置+1开始至末尾的文件名
+                string ProjectTestProgressFileName = ProjectTestProgressTemplateFilePath.Substring(index + 1);
+                //项目测试进度文件路径
+                projecttestprogressfilepath = projectfolderpath + @"\" + ProjectTestProgressFileName;
+                //复制模板文件至项目文件夹下
+                if (FileHelper.CopyFileTo(ProjectTestProgressTemplateFilePath, projecttestprogressfilepath))
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
             }
             catch (Exception)
             {
