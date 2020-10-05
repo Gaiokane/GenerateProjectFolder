@@ -343,12 +343,34 @@ namespace GenerateProjectFolder
             }
         }
 
-        //TXT_版本更新日志
+        /// <summary>
+        /// TXT_版本更新日志
+        /// </summary>
+        /// <returns>成功、失败</returns>
         private static bool txt_VersionUpdateLog()
         {
+            /* \n
+             * 2020-09-18：
+             * （版本：B2038）
+             * 新增：xxx
+             * \n
+             * --------------------------------------------------
+             * 
+             * 更新：xxx【第1轮】
+             */
             try
             {
-                return true;
+                string content = "\n" + DateTime.Now.ToString("yyyy-MM-dd")
+                    + "：\n（版本：" + CommonHelper.GetTestVersionNum(DateTime.Now)
+                    + "）\n新增：\n\n--------------------------------------------------\n\n更新：xxx【第1轮】";
+                if (FileHelper.CreateNewFile(projectfolderpath + @"\版本更新日志.txt", content))
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
             }
             catch (Exception)
             {
@@ -356,12 +378,22 @@ namespace GenerateProjectFolder
             }
         }
 
-        //TXT_问题
+        /// <summary>
+        /// TXT_问题
+        /// </summary>
+        /// <returns>成功、失败</returns>
         private static bool txt_Problem()
         {
             try
             {
-                return true;
+                if (FileHelper.CreateNewFile(projectfolderpath + @"\" + projectabbreviation + "问题.txt", ""))
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
             }
             catch (Exception)
             {
