@@ -46,6 +46,8 @@ namespace GenerateProjectFolder
             button7.Text = "FrmMain";
 
             button8.Text = "当前第几周";
+
+            button9.Text = "创建快捷方式";
         }
 
         private void textBox1_MouseDoubleClick(object sender, MouseEventArgs e)
@@ -446,6 +448,11 @@ namespace GenerateProjectFolder
             //DateTime dt = Convert.ToDateTime("2021-01-01 11:11:11");
             DateTime dt = DateTime.Now;
             MessageBox.Show(Helper.CommonHelper.GetTestVersionNum(dt));
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            Helper.FileHelper.CreateShortcutOnDesktop("test123qqq", @"E:\2020\123qqq");
         }
     }
 }

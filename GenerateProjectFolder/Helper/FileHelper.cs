@@ -1,5 +1,7 @@
-﻿using System;
+﻿using IWshRuntimeLibrary;
+using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -41,11 +43,11 @@ namespace GenerateProjectFolder.Helper
         {
             try
             {
-                if (File.Exists(source))//必须判断要复制的文件是否存在
+                if (System.IO.File.Exists(source))//必须判断要复制的文件是否存在
                 {
                     if (IsFileInUsed(source) == false)
                     {
-                        File.Copy(source, dest, true);//三个参数分别是源文件路径，存储路径，若存储路径有相同文件是否替换
+                        System.IO.File.Copy(source, dest, true);//三个参数分别是源文件路径，存储路径，若存储路径有相同文件是否替换
                         return true;
                     }
                     else
@@ -74,11 +76,11 @@ namespace GenerateProjectFolder.Helper
         {
             try
             {
-                if (File.Exists(source))
+                if (System.IO.File.Exists(source))
                 {
                     if (IsFileInUsed(source) == false)
                     {
-                        File.Move(source, dest);
+                        System.IO.File.Move(source, dest);
                         return true;
                     }
                     else
@@ -122,7 +124,7 @@ namespace GenerateProjectFolder.Helper
             try
             {
                 bool inUse = true;
-                if (File.Exists(fileName))
+                if (System.IO.File.Exists(fileName))
                 {
                     FileStream fs = null;
                     try
@@ -162,7 +164,7 @@ namespace GenerateProjectFolder.Helper
         /// <returns>true, false</returns>
         public static bool IsFileExists(string fileName)
         {
-            return File.Exists(fileName);
+            return System.IO.File.Exists(fileName);
         }
 
         /// <summary>
@@ -189,6 +191,48 @@ namespace GenerateProjectFolder.Helper
             catch
             {
                 return false;
+            }
+        }
+
+        /// <summary>
+        /// 在桌面创建快捷方式
+        /// </summary>
+        /// <param name="ShortcutName">快捷方式名称</param>
+        /// <param name="TargetPath">快捷方式目标路径</param>
+        public static void CreateShortcutOnDesktop(string ShortcutName, string TargetPath)
+        {
+            //添加引用 (com->Windows Script Host Object Model)，using IWshRuntimeLibrary;
+            String shortcutPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory), ShortcutName + ".lnk");
+            if (!System.IO.File.Exists(shortcutPath))
+            {
+                // 获取当前应用程序目录地址
+                String exePath = Process.GetCurrentProcess().MainModule.FileName;
+                IWshShell shell = new WshShell();
+                // 确定是否已经创建的快捷键被改名了
+                foreach (var item in Directory.GetFiles(Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory), "*.lnk"))
+                {
+                    WshShortcut tempShortcut = (WshShortcut)shell.CreateShortcut(item);
+                    if (tempShortcut.TargetPath == exePath)
+                    {
+                        return;
+                    }
+                }
+                WshShortcut shortcut = (WshShortcut)shell.CreateShortcut(shortcutPath);
+                //目标
+                shortcut.TargetPath = TargetPath;
+                //目标后面跟的参数，会有个空格隔开
+                //shortcut.Arguments = ""; 
+                //备注
+                //shortcut.Description = "";
+                //起始位置
+                //shortcut.WorkingDirectory = Environment.CurrentDirectory;//程序所在文件夹，在快捷方式图标点击右键可以看到此属性
+                //shortcut.WorkingDirectory = "";
+                //图标，该图标是应用程序的资源文件
+                //shortcut.IconLocation = exePath;
+                //快捷键
+                //shortcut.Hotkey = "CTRL+SHIFT+W";//热键，发现没作用，大概需要注册一下
+                shortcut.WindowStyle = 1;
+                shortcut.Save();
             }
         }
     }
