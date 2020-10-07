@@ -181,6 +181,7 @@ namespace GenerateProjectFolder.Helper
         /// 新建目录，如果已存在，则不进行操作
         /// </summary>
         /// <param name="path">目录路径</param>
+        /// <returns>true, false</returns>
         public static bool CreateNewDirectory(string path)
         {
             try
@@ -199,24 +200,20 @@ namespace GenerateProjectFolder.Helper
         /// </summary>
         /// <param name="ShortcutName">快捷方式名称</param>
         /// <param name="TargetPath">快捷方式目标路径</param>
-        public static void CreateShortcutOnDesktop(string ShortcutName, string TargetPath)
+        /// <returns>true：创建成功, false：创建失败，已存在</returns>
+        public static bool CreateShortcutOnDesktop(string ShortcutName, string TargetPath)
         {
             //添加引用 (com->Windows Script Host Object Model)，using IWshRuntimeLibrary;
             String shortcutPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory), ShortcutName + ".lnk");
-            if (!System.IO.File.Exists(shortcutPath))
+            //有相同快捷方式，不创建
+            if (System.IO.File.Exists(shortcutPath))
             {
-                // 获取当前应用程序目录地址
-                String exePath = Process.GetCurrentProcess().MainModule.FileName;
+                return false;
+            }
+            //没有相同快捷方式，创建
+            else
+            {
                 IWshShell shell = new WshShell();
-                // 确定是否已经创建的快捷键被改名了
-                foreach (var item in Directory.GetFiles(Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory), "*.lnk"))
-                {
-                    WshShortcut tempShortcut = (WshShortcut)shell.CreateShortcut(item);
-                    if (tempShortcut.TargetPath == exePath)
-                    {
-                        return;
-                    }
-                }
                 WshShortcut shortcut = (WshShortcut)shell.CreateShortcut(shortcutPath);
                 //目标
                 shortcut.TargetPath = TargetPath;
@@ -233,6 +230,7 @@ namespace GenerateProjectFolder.Helper
                 //shortcut.Hotkey = "CTRL+SHIFT+W";//热键，发现没作用，大概需要注册一下
                 shortcut.WindowStyle = 1;
                 shortcut.Save();
+                return true;
             }
         }
     }

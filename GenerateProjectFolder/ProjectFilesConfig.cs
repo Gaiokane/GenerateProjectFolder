@@ -21,12 +21,21 @@ namespace GenerateProjectFolder
         private static string systemtestcasefolderpath = null;
         //测试用例路径
         private static string systemtestcasefilepath = null;
+        //缺陷截图文件夹路径
+        private static string defectscreenshotfolderpath = null;
         //测试服务器部署信息登记表路径
         private static string testserverdeploymentinformationfilepath = null;
         //项目测试进度路径
         private static string projecttestprogressfilepath = null;
 
-        //调用以下所有方法
+        /// <summary>
+        /// 调用以下所有方法
+        /// </summary>
+        /// <param name="GenerateToPath">生成至路径</param>
+        /// <param name="ProjectNum">项目编号</param>
+        /// <param name="ProjectName">项目名称</param>
+        /// <param name="ProjectAbbreviation">项目简称</param>
+        /// <returns>true, false</returns>
         public static bool init(string GenerateToPath, string ProjectNum, string ProjectName, string ProjectAbbreviation)
         {
             try
@@ -53,6 +62,10 @@ namespace GenerateProjectFolder
                 txt_VersionUpdateLog();
                 //TXT_问题
                 txt_Problem();
+                //项目文件夹桌面快捷方式
+                FileHelper.CreateShortcutOnDesktop(projectnum + projectname, projectfolderpath);
+                //缺陷截图文件夹桌面快捷方式
+                FileHelper.CreateShortcutOnDesktop(projectabbreviation + "缺陷截图", defectscreenshotfolderpath);
                 return true;
             }
             catch (Exception)
@@ -171,7 +184,8 @@ namespace GenerateProjectFolder
                 }
                 else
                 {
-                    FileHelper.CreateNewDirectory(ProjectFolderPath + @"\" + projectabbreviation + "缺陷截图");
+                    defectscreenshotfolderpath = ProjectFolderPath + @"\" + projectabbreviation + "缺陷截图";
+                    FileHelper.CreateNewDirectory(defectscreenshotfolderpath);
                     return true;
                 }
             }
