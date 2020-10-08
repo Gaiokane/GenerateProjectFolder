@@ -48,6 +48,10 @@ namespace GenerateProjectFolder
             button8.Text = "当前第几周";
 
             button9.Text = "创建快捷方式";
+            button10.Text = "查看批注";
+
+            textBox3.Text = @"E:\新建 Microsoft Excel 工作表-pizhu.xlsx";
+            button11.Text = "查看指定excel所有sheet批注";
         }
 
         private void textBox1_MouseDoubleClick(object sender, MouseEventArgs e)
@@ -453,6 +457,18 @@ namespace GenerateProjectFolder
         private void button9_Click(object sender, EventArgs e)
         {
             Helper.FileHelper.CreateShortcutOnDesktop("test123qqq", @"E:\2020\123qqq");
+        }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(Helper.ExcelHelper.ReadExcelCommentBySheet(@"E:\新建 Microsoft Excel 工作表-pizhu.xlsx", 0));
+            MessageBox.Show(Helper.ExcelHelper.ReadExcelCommentBySheet(@"E:\新建 Microsoft Excel 工作表-pizhu.xlsx"));
+        }
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(Helper.ExcelHelper.ReadExcelCommentBySheet(textBox3.Text.Trim()));
+            Clipboard.SetDataObject(Helper.ExcelHelper.ReadExcelCommentBySheet(textBox3.Text.Trim()));
         }
     }
 }

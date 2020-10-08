@@ -170,5 +170,147 @@ namespace GenerateProjectFolder.Helper
                 data = null;
             }
         }
+
+        /// <summary>
+        /// 读取Excel中指定Sheet的所有批注
+        /// </summary>
+        /// <param name="filePath">Excel文件路径</param>
+        /// <param name="sheetIndex">sheet页index，0开始</param>
+        /// <returns>返回指定Sheet页批注，一行一条</returns>
+        public static string ReadExcelCommentBySheet(string filePath, int sheetIndex)
+        {
+            string result = "";
+            IWorkbook wk = null;
+            string extension = System.IO.Path.GetExtension(filePath);
+            try
+            {
+                FileStream fs = File.OpenRead(filePath);
+                if (extension.Equals(".xls"))
+                {
+                    //把xls文件中的数据写入wk中
+                    wk = new HSSFWorkbook(fs);
+                }
+                else
+                {
+                    //把xlsx文件中的数据写入wk中
+                    wk = new XSSFWorkbook(fs);
+                }
+
+                fs.Close();
+
+                //读取当前表数据
+                StringBuilder sb = new StringBuilder();
+                //打印对应sheet
+                sb.AppendLine("Sheet" + sheetIndex + "：" + wk.GetSheetName(sheetIndex) + "\n");
+                //实例化row
+                IRow irow;
+
+                //实例化sheet
+                ISheet sheet = wk.GetSheetAt(sheetIndex);
+                //sheet总行数
+                for (int i = 0; i < sheet.PhysicalNumberOfRows; i++)
+                {
+                    irow = sheet.GetRow(i);
+                    var s = "";
+                    //sheet总列数
+                    for (int j = 0; j < irow.PhysicalNumberOfCells; j++)
+                    {
+                        //判空，不然sheet.GetRow(i).GetCell(j).CellComment报错
+                        if (sheet.GetRow(i).GetCell(j).CellComment != null)
+                        {
+                            //遍历sheet每个单元格获取批注，去除批注人后面换行
+                            s = sheet.GetRow(i).GetCell(j).CellComment.String.ToString().Replace("\n", "");
+                            //换行
+                            sb.AppendLine(s);
+                        }
+                    }
+                }
+
+                result = sb.ToString();
+
+                return result;
+            }
+
+            catch (Exception e)
+            {
+                //只在Debug模式下才输出
+                return e.Message;
+            }
+        }
+
+        /// <summary>
+        /// 读取Excel中指定Sheet的所有批注
+        /// </summary>
+        /// <param name="filePath">Excel文件路径</param>
+        /// <returns>返回所有Sheet页批注，一行一条</returns>
+        public static string ReadExcelCommentBySheet(string filePath)
+        {
+            string result = "";
+            IWorkbook wk = null;
+            string extension = System.IO.Path.GetExtension(filePath);
+            try
+            {
+                FileStream fs = File.OpenRead(filePath);
+                if (extension.Equals(".xls"))
+                {
+                    //把xls文件中的数据写入wk中
+                    wk = new HSSFWorkbook(fs);
+                }
+                else
+                {
+                    //把xlsx文件中的数据写入wk中
+                    wk = new XSSFWorkbook(fs);
+                }
+
+                fs.Close();
+
+                //读取当前表数据
+                StringBuilder sb = new StringBuilder();
+                //实例化row
+                IRow irow;
+
+                //总sheet数
+                for (int i = 0; i < wk.NumberOfSheets; i++)
+                {
+                    //sheet0以上多一个换行
+                    if (i > 0)
+                    {
+                        sb.AppendLine();
+                    }
+                    //打印对应sheet
+                    sb.AppendLine("Sheet" + i + "：" + wk.GetSheetName(i) + "\n");
+                    //实例化sheet
+                    ISheet sheet = wk.GetSheetAt(i);
+                    //sheet总行数
+                    for (int j = 0; j < sheet.PhysicalNumberOfRows; j++)
+                    {
+                        irow = sheet.GetRow(i);
+                        var s = "";
+                        //sheet总列数
+                        for (int k = 0; k < irow.PhysicalNumberOfCells; k++)
+                        {
+                            //判空，不然sheet.GetRow(i).GetCell(j).CellComment报错
+                            if (sheet.GetRow(j).GetCell(k).CellComment != null)
+                            {
+                                //遍历sheet每个单元格获取批注，去除批注人后面换行
+                                s = sheet.GetRow(j).GetCell(k).CellComment.String.ToString().Replace("\n", "");
+                                //换行
+                                sb.AppendLine(s);
+                            }
+                        }
+                    }
+                }
+
+                result = sb.ToString();
+
+                return result;
+            }
+
+            catch (Exception e)
+            {
+                //只在Debug模式下才输出
+                return e.Message;
+            }
+        }
     }
 }

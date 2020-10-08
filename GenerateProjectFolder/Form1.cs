@@ -80,7 +80,8 @@ namespace GenerateProjectFolder
          * √16.文件操作类-修改excel指定单元格——[ExcelHelper.cs]ModifyExcelByCell(string filePath, int sheetIndex, int row, int cell, string cellValue)
          * √17.获取指定日期测试版本号——[CommonHelper.cs]GetTestVersionNum(DateTime dt)
          * 18.在桌面创建快捷方式[FileHelper.cs]CreateShortcutOnDesktop(string ShortcutName, string TargetPath)
-         * 19.
+         * 19.读取Excel中指定Sheet的所有批注——[ExcelHelper.cs]ReadExcelCommentBySheet(string filePath, int sheetIndex)/ReadExcelCommentBySheet(string filePath)（两个重载，一个指定sheet，一个全部sheet）
+         * 20.
          * 备注：
          * 1）1.默认值如文件项、生成至路径
          * ———————用到的工具类———————
