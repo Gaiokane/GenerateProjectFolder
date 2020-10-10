@@ -11,6 +11,8 @@ namespace GenerateProjectFolder.Helper
     {
         //默认项目文件夹
         public static string DefaultProjectFolder;
+        //模板文件列表
+        public static string TemplateFileList;
         //系统测试用例模板文件路径
         public static string SystemTestCaseTemplateFilePath;
         //测试服务器部署信息登记表模板文件路径
@@ -38,6 +40,7 @@ namespace GenerateProjectFolder.Helper
         public static void getAllDefaultappSettings()
         {
             DefaultProjectFolder = getappSettings("DefaultProjectFolder");
+            TemplateFileList = getappSettings("TemplateFileList");
             SystemTestCaseTemplateFilePath = getappSettings("SystemTestCaseTemplateFilePath");
             TestServerDeploymentInformationTemplateFilePath = getappSettings("TestServerDeploymentInformationTemplateFilePath");
             ProjectTestProgressTemplateFilePath = getappSettings("ProjectTestProgressTemplateFilePath");
@@ -54,17 +57,21 @@ namespace GenerateProjectFolder.Helper
             {
                 addappSettings("DefaultProjectFolder", @"E:\2020");
             }
+            if (string.IsNullOrEmpty(TemplateFileList))
+            {
+                addappSettings("TemplateFileList", "SystemTestCaseTemplateFilePath;TestServerDeploymentInformationTemplateFilePath;ProjectTestProgressTemplateFilePath");
+            }
             if (string.IsNullOrEmpty(SystemTestCaseTemplateFilePath))
             {
-                addappSettings("SystemTestCaseTemplateFilePath", @"D:\模板\_ST_系统测试用例.xlsx");
+                addappSettings("SystemTestCaseTemplateFilePath", @"系统测试用例;D:\模板\_ST_系统测试用例.xlsx;");
             }
             if (string.IsNullOrEmpty(TestServerDeploymentInformationTemplateFilePath))
             {
-                addappSettings("TestServerDeploymentInformationTemplateFilePath", @"D:\模板\【重要】测试服务器部署信息登记表-xxx.xls");
+                addappSettings("TestServerDeploymentInformationTemplateFilePath", @"测试服务器部署信息登记表;D:\模板\【重要】测试服务器部署信息登记表-xxx.xls;");
             }
             if (string.IsNullOrEmpty(ProjectTestProgressTemplateFilePath))
             {
-                addappSettings("ProjectTestProgressTemplateFilePath", @"D:\模板\项目测试进度.xls");
+                addappSettings("ProjectTestProgressTemplateFilePath", @"项目测试进度;D:\模板\项目测试进度.xls;");
             }
         }
         #endregion
@@ -173,6 +180,32 @@ namespace GenerateProjectFolder.Helper
         public static string getappSettings(string key)
         {
             string result = RWConfig.GetappSettingsValue(key, CONFIGPATH);
+            return result;
+        }
+        #endregion
+
+        #region 查询appSettings配置，并对键值以分号分割
+        /// <summary>
+        /// 查询appSettings配置，并对键值以分号分割
+        /// </summary>
+        /// <param name="Key">appSettings键</param>
+        /// <returns>appSettings值，以分号分割，返回数组</returns>
+        public static string[] getappSettingsSplitBySemicolon(string key)
+        {
+            string[] result = { };
+            string values = RWConfig.GetappSettingsValue(key, CONFIGPATH);
+            for (int i = 0; i < 2; i++)
+            {
+                if (string.IsNullOrEmpty(values))
+                {
+                    init();
+                }
+                else
+                {
+                    result = values.Split(';');
+                    break;
+                }
+            }
             return result;
         }
         #endregion
