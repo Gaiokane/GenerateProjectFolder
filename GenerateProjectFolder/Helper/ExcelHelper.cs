@@ -215,11 +215,15 @@ namespace GenerateProjectFolder.Helper
                     //sheet总列数
                     for (int j = 0; j < irow.PhysicalNumberOfCells; j++)
                     {
-                        //判空，不然sheet.GetRow(i).GetCell(j).CellComment报错
-                        if (sheet.GetRow(i).GetCell(j).CellComment != null)
+                        //判空，不然sheet.GetRow(i).GetCell(j)和sheet.GetRow(i).GetCell(j).CellComment报错
+                        //var a = sheet.GetRow(i);
+                        //GetCell返回null后无法再进行CellComment
+                        //var b = sheet.GetRow(i).GetCell(j);
+                        //var c = sheet.GetRow(i).GetCell(j).CellComment;
+                        if (sheet.GetRow(i).GetCell(j) != null && sheet.GetRow(i).GetCell(j).CellComment != null)
                         {
                             //遍历sheet每个单元格获取批注，去除批注人后面换行
-                            s = sheet.GetRow(i).GetCell(j).CellComment.String.ToString().Replace("\n", "");
+                            s = getCellLocation(i, j) + ":" + sheet.GetRow(i).GetCell(j).CellComment.String.ToString().Replace("\n", "");
                             //换行
                             sb.AppendLine(s);
                         }
@@ -289,11 +293,15 @@ namespace GenerateProjectFolder.Helper
                         //sheet总列数
                         for (int k = 0; k < irow.PhysicalNumberOfCells; k++)
                         {
-                            //判空，不然sheet.GetRow(i).GetCell(j).CellComment报错
-                            if (sheet.GetRow(j).GetCell(k).CellComment != null)
+                            //判空，不然sheet.GetRow(i).GetCell(j)和sheet.GetRow(i).GetCell(j).CellComment报错
+                            //var a = sheet.GetRow(i);
+                            //GetCell返回null后无法再进行CellComment
+                            //var b = sheet.GetRow(i).GetCell(j);
+                            //var c = sheet.GetRow(i).GetCell(j).CellComment;
+                            if (sheet.GetRow(j).GetCell(k) != null && sheet.GetRow(j).GetCell(k).CellComment != null)
                             {
                                 //遍历sheet每个单元格获取批注，去除批注人后面换行
-                                s = sheet.GetRow(j).GetCell(k).CellComment.String.ToString().Replace("\n", "");
+                                s = getCellLocation(j, k) + ":" + sheet.GetRow(j).GetCell(k).CellComment.String.ToString().Replace("\n", "");
                                 //换行
                                 sb.AppendLine(s);
                             }
@@ -311,6 +319,20 @@ namespace GenerateProjectFolder.Helper
                 //只在Debug模式下才输出
                 return e.Message;
             }
+        }
+
+        /// <summary>
+        /// 根据循环变量获取Excel中对应单元格位置
+        /// </summary>
+        /// <param name="row">第几行，从0开始</param>
+        /// <param name="cell">第几列，从0开始</param>
+        /// <returns>返回对应单元格位置，如A1</returns>
+        public static string getCellLocation(int row, int cell)
+        {
+            string result = null;
+            string[] str = { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z" };
+            result = str[cell] + (row + 1);
+            return result;
         }
     }
 }
