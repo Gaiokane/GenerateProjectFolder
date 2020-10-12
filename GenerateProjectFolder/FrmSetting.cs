@@ -30,12 +30,12 @@ namespace GenerateProjectFolder
             Helper.ConfigHelper.init();
             txtbox_DefaultProjectFolder.Text = Helper.ConfigHelper.getappSettings("DefaultProjectFolder");
 
-            dgv_TemplateFileSetting.Columns.Add("TemplateFileCode", "模板文件编码");
+            dgv_TemplateFileSetting.Columns.Add("TemplateFileNum", "模板文件编码");
             dgv_TemplateFileSetting.Columns.Add("TemplateFileName", "模板文件名称");
             dgv_TemplateFileSetting.Columns.Add("TemplateFilePath", "模板文件路径");
             dgv_TemplateFileSetting.Columns.Add("TemplateFileMark", "模板文件备注");
 
-            dgv_TemplateFileSetting.Columns["TemplateFileCode"].Width = 200;
+            dgv_TemplateFileSetting.Columns["TemplateFileNum"].Width = 200;
             dgv_TemplateFileSetting.Columns["TemplateFileName"].Width = 200;
             dgv_TemplateFileSetting.Columns["TemplateFilePath"].Width = 500;
             dgv_TemplateFileSetting.Columns["TemplateFileMark"].Width = 100;
@@ -60,7 +60,7 @@ namespace GenerateProjectFolder
                         TemplateFileList = list.ToArray();
                     }
                     int index = dgv_TemplateFileSetting.Rows.Add();
-                    dgv_TemplateFileSetting.Rows[index].Cells["TemplateFileCode"].Value = item;
+                    dgv_TemplateFileSetting.Rows[index].Cells["TemplateFileNum"].Value = item;
                     dgv_TemplateFileSetting.Rows[index].Cells["TemplateFileName"].Value = TemplateFileList[0];
                     dgv_TemplateFileSetting.Rows[index].Cells["TemplateFilePath"].Value = TemplateFileList[1];
                     dgv_TemplateFileSetting.Rows[index].Cells["TemplateFileMark"].Value = TemplateFileList[2];
@@ -74,10 +74,28 @@ namespace GenerateProjectFolder
             dgv_TemplateFileSetting.ClearSelection();
         }
 
+        //模板文件设置-文本框置空
+        private void ClearTemplateFileSettingTextBox()
+        {
+            txtbox_TemplateFileSetting_Num.Text = "";
+            txtbox_TemplateFileSetting_Name.Text = "";
+            txtbox_TemplateFileSetting_Path.Text = "";
+            txtbox_TemplateFileSetting_Remark.Text = "";
+        }
+
+        //模板文件设置-按钮统一状态
+        private void SetTemplateFileSettingButtonEnable(bool Enable)
+        {
+            btn_TemplateFileSetting_Refresh.Enabled = Enable;
+            btn_TemplateFileSetting_New.Enabled = Enable;
+            btn_TemplateFileSetting_Edit.Enabled = Enable;
+            btn_TemplateFileSetting_Del.Enabled = Enable;
+        }
+
         //模板文件设置-刷新按钮单击事件
         private void btn_TemplateFileSetting_Refresh_Click(object sender, EventArgs e)
         {
-            dgv_TemplateFileSetting.ClearSelection();
+            TemplateFileSetting_dgv_init();
         }
 
         //模板文件设置-新增按钮单击事件
@@ -90,13 +108,12 @@ namespace GenerateProjectFolder
             groupBox3.Visible = true;
 
             //新增操作 文本框置空
-            txtbox_TemplateFileSetting_Num.Text = "";
-            txtbox_TemplateFileSetting_Name.Text = "";
-            txtbox_TemplateFileSetting_Remark.Text = "";
-            txtbox_TemplateFileSetting_Path.Text = "";
+            ClearTemplateFileSettingTextBox();
 
             //模板文件设置-是否点击新增/编辑按钮 0=初始,1=新增,2=编辑
             TemplateFileSettingBtnStatus = 1;
+
+            SetTemplateFileSettingButtonEnable(false);
         }
 
         //模板文件设置-编辑按钮单击事件
@@ -121,13 +138,17 @@ namespace GenerateProjectFolder
                     groupBox3.Visible = true;
 
                     //编辑操作-文本框取所选行数据
-                    txtbox_TemplateFileSetting_Num.Text = "";
-                    txtbox_TemplateFileSetting_Name.Text = "";
-                    txtbox_TemplateFileSetting_Remark.Text = "";
-                    txtbox_TemplateFileSetting_Path.Text = "";
+                    txtbox_TemplateFileSetting_Num.Text = dgv_TemplateFileSetting.SelectedCells[0].Value.ToString();
+                    txtbox_TemplateFileSetting_Name.Text = dgv_TemplateFileSetting.SelectedCells[1].Value.ToString();
+                    txtbox_TemplateFileSetting_Path.Text = dgv_TemplateFileSetting.SelectedCells[2].Value.ToString();
+                    txtbox_TemplateFileSetting_Remark.Text = dgv_TemplateFileSetting.SelectedCells[3].Value.ToString();
+
+                    txtbox_TemplateFileSetting_Num.ReadOnly = true;
 
                     //模板文件设置-是否点击新增/编辑按钮 0=初始,1=新增,2=编辑
                     TemplateFileSettingBtnStatus = 2;
+
+                    SetTemplateFileSettingButtonEnable(false);
                 }
             }
         }
@@ -160,6 +181,8 @@ namespace GenerateProjectFolder
             dgv_TemplateFileSetting.Location = new System.Drawing.Point(6, 49);
             //隐藏[模板文件设置->新增/编辑部分]
             groupBox3.Visible = false;
+
+            SetTemplateFileSettingButtonEnable(true);
         }
 
         //模板文件设置-[新增/编辑]->保存按钮单击事件
@@ -203,12 +226,42 @@ namespace GenerateProjectFolder
                         if (TemplateFileSettingBtnStatus == 1)
                         {
                             //判断是否有重复值
+                            //有重复
+                            if (string.IsNullOrEmpty(Helper.ConfigHelper.getappSettings(num)) != true)
+                            {
+                                MessageBox.Show("模板文件编码已存在！");
+                            }
+                            else
+                            {
+                                Helper.ConfigHelper.addappSettings(num, name + ";" + path + ";" + remark);
+                                string TemplateFileListValue = Helper.ConfigHelper.getappSettings("TemplateFileList");
+                                Helper.ConfigHelper.editappSettings("TemplateFileList", TemplateFileListValue + ";" + num);
+                                MessageBox.Show("新增成功");
+                                ClearTemplateFileSettingTextBox();
+
+                                btn_TemplateFileSetting_Cancel_Click(null, null);
+                            }
                         }
                         //编辑
                         if (TemplateFileSettingBtnStatus == 2)
                         {
                             //判断是否有重复值
+                            //没有重复
+                            if (string.IsNullOrEmpty(Helper.ConfigHelper.getappSettings(num)) == true)
+                            {
+                                MessageBox.Show("出现异常！");
+                            }
+                            else
+                            {
+                                Helper.ConfigHelper.editappSettings(num, name + ";" + path + ";" + remark);
+                                MessageBox.Show("修改成功");
+                                ClearTemplateFileSettingTextBox();
+
+                                btn_TemplateFileSetting_Cancel_Click(null, null);
+                            }
                         }
+
+                        TemplateFileSetting_dgv_init();
                     }
                 }
             }
