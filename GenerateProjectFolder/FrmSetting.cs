@@ -109,6 +109,7 @@ namespace GenerateProjectFolder
 
             //新增操作 文本框置空
             ClearTemplateFileSettingTextBox();
+            txtbox_TemplateFileSetting_Num.ReadOnly = false;
 
             //模板文件设置-是否点击新增/编辑按钮 0=初始,1=新增,2=编辑
             TemplateFileSettingBtnStatus = 1;
@@ -168,7 +169,40 @@ namespace GenerateProjectFolder
                 }
                 else
                 {
+                    string TemplateFileNum = dgv_TemplateFileSetting.SelectedCells[0].Value.ToString();
+                    string TemplateFileName = dgv_TemplateFileSetting.SelectedCells[1].Value.ToString();
 
+                    if (DialogResult.OK == MessageBox.Show("确认删除：" + TemplateFileName + "？", "提示？", MessageBoxButtons.OKCancel))
+                    {
+                        try
+                        {
+                            string[] str = Helper.ConfigHelper.getappSettingsSplitBySemicolon("TemplateFileList");
+                            foreach (var item in str)
+                            {
+                                if (item == TemplateFileNum)
+                                {
+                                    if (Helper.ConfigHelper.delappSettings(TemplateFileNum) == true)
+                                    {
+                                        List<string> list = str.ToList();
+                                        list.Remove(item);
+                                        str = list.ToArray();
+                                        string result = String.Join(";", str);
+                                        Helper.ConfigHelper.editappSettings("TemplateFileList", result);
+                                        MessageBox.Show(TemplateFileName + "已删除");
+                                        TemplateFileSetting_dgv_init();
+                                    }
+                                    else
+                                    {
+                                        MessageBox.Show("未找到匹配项，删除失败！");
+                                    }
+                                }
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.Message);
+                        }
+                    }
                 }
             }
         }
@@ -181,6 +215,8 @@ namespace GenerateProjectFolder
             dgv_TemplateFileSetting.Location = new System.Drawing.Point(6, 49);
             //隐藏[模板文件设置->新增/编辑部分]
             groupBox3.Visible = false;
+
+            TemplateFileSetting_dgv_init();
 
             SetTemplateFileSettingButtonEnable(true);
         }
@@ -230,6 +266,8 @@ namespace GenerateProjectFolder
                             if (string.IsNullOrEmpty(Helper.ConfigHelper.getappSettings(num)) != true)
                             {
                                 MessageBox.Show("模板文件编码已存在！");
+                                txtbox_TemplateFileSetting_Num.Focus();
+                                txtbox_TemplateFileSetting_Num.SelectAll();
                             }
                             else
                             {
