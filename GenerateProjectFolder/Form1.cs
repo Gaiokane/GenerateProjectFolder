@@ -44,9 +44,9 @@ namespace GenerateProjectFolder
          * 14.
          * 15.
          * ———————配置文件———————
-         * 1.<文件项> 存 文件路径键值对中的键，分号间隔。如<add key="FileName" value="FileName_01;FileName_02;FileName_03" />
-         * 2.<文件路径> 存 文件路径，如<add key="FileName_01" value="D:/vs-program/GitHub/GenerateProjectFolder/GenerateProjectFolder.sln" />
-         * 3.<生成目录文件路径> 存 生成的目录、文件保存路径，如<add key="ProjectFolderPath" value="D:/vs-program/GitHub/" />
+         * 1.√<文件项> 存 文件路径键值对中的键，分号间隔。如<add key="TemplateFileList" value="FileName_01;FileName_02;FileName_03" />
+         * 2.√<文件路径> 存 文件路径，如<add key="xxTemplateFilePath" value="D:/vs-program/GitHub/GenerateProjectFolder/GenerateProjectFolder.sln" />
+         * 3.√<生成目录文件路径> 存 生成的目录、文件保存路径，如<add key="DefaultProjectFolder" value="D:/vs-program/GitHub/" />
          * 4.文件项是否启用、复制、复制并修改（待设计）
          * 5.
          * 6.
@@ -79,8 +79,8 @@ namespace GenerateProjectFolder
          * √15.文件操作类-读取excel指定单元格——[ExcelHelper.cs]ReadExcelByCell(string filePath, int sheetIndex, int row, int cell)
          * √16.文件操作类-修改excel指定单元格——[ExcelHelper.cs]ModifyExcelByCell(string filePath, int sheetIndex, int row, int cell, string cellValue)
          * √17.获取指定日期测试版本号——[CommonHelper.cs]GetTestVersionNum(DateTime dt)
-         * 18.在桌面创建快捷方式[FileHelper.cs]CreateShortcutOnDesktop(string ShortcutName, string TargetPath)
-         * 19.读取Excel中指定Sheet的所有批注——[ExcelHelper.cs]ReadExcelCommentBySheet(string filePath, int sheetIndex)/ReadExcelCommentBySheet(string filePath)（两个重载，一个指定sheet，一个全部sheet）
+         * √18.在桌面创建快捷方式[FileHelper.cs]CreateShortcutOnDesktop(string ShortcutName, string TargetPath)
+         * √19.读取Excel中指定Sheet的所有批注——[ExcelHelper.cs]ReadExcelCommentBySheet(string filePath, int sheetIndex)/ReadExcelCommentBySheet(string filePath)（两个重载，一个指定sheet，一个全部sheet）
          * 20.
          * 备注：
          * 1）1.默认值如文件项、生成至路径

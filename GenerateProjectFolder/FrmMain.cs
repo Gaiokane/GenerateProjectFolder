@@ -105,5 +105,12 @@ namespace GenerateProjectFolder
                 txtbox_GenerateTo.SelectionStart = txtbox_GenerateTo.Text.Length;
             }
         }
+
+        //打开DemoExcel测试功能窗体
+        private void btn_Test_Click(object sender, EventArgs e)
+        {
+            DemoExcel de = new DemoExcel();
+            de.Show();
+        }
     }
 }

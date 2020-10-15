@@ -38,6 +38,7 @@
             this.txtbox_ProjectAbbreviation = new System.Windows.Forms.TextBox();
             this.btn_Generate = new System.Windows.Forms.Button();
             this.btn_Setting = new System.Windows.Forms.Button();
+            this.btn_Test = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lab_GenerateTo
@@ -125,11 +126,22 @@
             this.btn_Setting.UseVisualStyleBackColor = true;
             this.btn_Setting.Click += new System.EventHandler(this.btn_Setting_Click);
             // 
+            // btn_Test
+            // 
+            this.btn_Test.Location = new System.Drawing.Point(331, 120);
+            this.btn_Test.Name = "btn_Test";
+            this.btn_Test.Size = new System.Drawing.Size(75, 23);
+            this.btn_Test.TabIndex = 10;
+            this.btn_Test.Text = "测试功能";
+            this.btn_Test.UseVisualStyleBackColor = true;
+            this.btn_Test.Click += new System.EventHandler(this.btn_Test_Click);
+            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(495, 155);
+            this.Controls.Add(this.btn_Test);
             this.Controls.Add(this.btn_Setting);
             this.Controls.Add(this.btn_Generate);
             this.Controls.Add(this.txtbox_ProjectAbbreviation);
@@ -161,5 +173,6 @@
         private System.Windows.Forms.TextBox txtbox_ProjectAbbreviation;
         private System.Windows.Forms.Button btn_Generate;
         private System.Windows.Forms.Button btn_Setting;
+        private System.Windows.Forms.Button btn_Test;
     }
 }
