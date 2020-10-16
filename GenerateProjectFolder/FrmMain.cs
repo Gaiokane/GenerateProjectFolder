@@ -25,6 +25,17 @@ namespace GenerateProjectFolder
             txtbox_ProjectNum.Select();
         }
 
+        /// <summary>
+        /// 文本框置空
+        /// </summary>
+        private void ClearTextBox()
+        {
+            txtbox_GenerateTo.Text = Helper.ConfigHelper.getappSettings("DefaultProjectFolder");
+            txtbox_ProjectNum.Text = "";
+            txtbox_ProjectName.Text = "";
+            txtbox_ProjectAbbreviation.Text = "";
+        }
+
         //生成按钮单击事件
         private void btn_Generate_Click(object sender, EventArgs e)
         {
@@ -71,6 +82,8 @@ namespace GenerateProjectFolder
                             {
                                 System.Diagnostics.Process.Start(generateto + @"\" + projectnum + projectname);
                             }
+                            //生成成功，文本框还原、置空
+                            ClearTextBox();
                         }
                         else
                         {

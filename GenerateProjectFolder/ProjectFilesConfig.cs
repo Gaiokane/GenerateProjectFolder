@@ -258,7 +258,7 @@ namespace GenerateProjectFolder
             try
             {
                 //读取配置文件中模板文件路径
-                string SystemTestCaseTemplateFilePath = ConfigHelper.getappSettings("SystemTestCaseTemplateFilePath");
+                string SystemTestCaseTemplateFilePath = ConfigHelper.getappSettings("SystemTestCaseTemplateFilePath").Split(';')[1];
                 //按“\”分割，取最后一个匹配项的索引位置
                 int index = SystemTestCaseTemplateFilePath.LastIndexOf(@"\");
                 //取出上方索引位置+1开始至末尾的文件名
@@ -298,7 +298,7 @@ namespace GenerateProjectFolder
             try
             {
                 //读取配置文件中模板文件路径
-                string TestServerDeploymentInformationTemplateFilePath = ConfigHelper.getappSettings("TestServerDeploymentInformationTemplateFilePath");
+                string TestServerDeploymentInformationTemplateFilePath = ConfigHelper.getappSettings("TestServerDeploymentInformationTemplateFilePath").Split(';')[1];
                 //按“\”分割，取最后一个匹配项的索引位置
                 int index = TestServerDeploymentInformationTemplateFilePath.LastIndexOf(@"\");
                 //取出上方索引位置+1开始至末尾的文件名，并将xxx替换为项目名称
@@ -334,7 +334,7 @@ namespace GenerateProjectFolder
             try
             {
                 //读取配置文件中模板文件路径
-                string ProjectTestProgressTemplateFilePath = ConfigHelper.getappSettings("ProjectTestProgressTemplateFilePath");
+                string ProjectTestProgressTemplateFilePath = ConfigHelper.getappSettings("ProjectTestProgressTemplateFilePath").Split(';')[1];
                 //按“\”分割，取最后一个匹配项的索引位置
                 int index = ProjectTestProgressTemplateFilePath.LastIndexOf(@"\");
                 //取出上方索引位置+1开始至末尾的文件名
