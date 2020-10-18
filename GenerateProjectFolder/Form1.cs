@@ -19,10 +19,10 @@ namespace GenerateProjectFolder
 
         /*
          * ———————执行流程———————
-         * 1.生成至路径读取配置文件，默认保存上一次新增成功的路径
-         * 2.在主窗体中填写项目编号（非必填）、项目名称（必填）、项目简称（必填）
+         * 1.生成至路径读取配置文件，默认保存上一次新增成功的路径（暂未实现，是否有必要保存上一次新增成功的路径）
+         * 2.在主窗体中填写项目编号（必填）、项目名称（必填）、项目简称（非必填）
          * 3.点击生成按钮，在生成至路径中创建项目目录，文件夹名（项目编号项目名称）
-         * 4.项目目录中含有设置窗体中配置的文件项
+         * 4.项目目录中含有设置窗体中配置的文件项（文件项有用到文件名，最好处理下，不在乎模板文件名）
          * 5.
          * 6.
          * 7.
@@ -39,8 +39,8 @@ namespace GenerateProjectFolder
          * 9.Excel_项目测试进度——[ProjectFilesConfig.cs]excel_ProjectTestProgress()
          * 10.TXT_版本更新日志——[ProjectFilesConfig.cs]txt_VersionUpdateLog()
          * 11.TXT_问题——[ProjectFilesConfig.cs]txt_Problem()
-         * 12.项目文件夹在桌面建快捷方式
-         * 13.缺陷截图在桌面建快捷方式
+         * 12.项目文件夹在桌面建快捷方式[FileHelper.cs]CreateShortcutOnDesktop(string ShortcutName, string TargetPath)
+         * 13.缺陷截图在桌面建快捷方式[FileHelper.cs]CreateShortcutOnDesktop(string ShortcutName, string TargetPath)
          * 14.
          * 15.
          * ———————配置文件———————
@@ -89,6 +89,12 @@ namespace GenerateProjectFolder
          * 2.（收费不用）Aspose.Cells[20.8.0.0]——Excel操作类，vs中程序包管理器[Install-Package Aspose.Cells][https://github.com/aspose-cells/Aspose.Cells-for-.NET][https://github.com/Jimmey-Jiang/Common.Utility/blob/master/src/Utility%E5%9F%BA%E7%A1%80%E7%B1%BB%E5%A4%A7%E5%85%A8_CN/Excel%E6%93%8D%E4%BD%9C%E7%B1%BB/excel.txt]
          * 3.NPOI[2.4.1.0]、NPOI.OOXML[2.4.1.0]、NPOI.OpenXml4Net[2.4.1.0]、NPOI.OpenXmlFormats[2.4.1.0]、——Excel操作类，功能同Aspose.Cells，免费[https://github.com/tonyqus/npoi]
          * 4.ICSharpCode.SharpZipLib[1.0.0.999]，NPOI会用到
+         * 5.
+         * ———————存在的问题———————
+         * 1.对模板文件xlsx修改并生成新Excel文件会异常，原因：NPOI对xlsx兼容性问题，2.4.1、2.5.1都有相同问题，xls没问题
+         * 2.读取Excel批注独立出来做，并加入导出功能
+         * 3.
+         * 4.
          * 5.
          */
     }
