@@ -81,7 +81,12 @@ namespace GenerateProjectFolder
          * √17.获取指定日期测试版本号——[CommonHelper.cs]GetTestVersionNum(DateTime dt)
          * √18.在桌面创建快捷方式[FileHelper.cs]CreateShortcutOnDesktop(string ShortcutName, string TargetPath)
          * √19.读取Excel中指定Sheet的所有批注——[ExcelHelper.cs]ReadExcelCommentBySheet(string filePath, int sheetIndex)/ReadExcelCommentBySheet(string filePath)（两个重载，一个指定sheet，一个全部sheet）
-         * 20.
+         * √20.复制文本到剪切板——[CommonHelper.cs]CopyToClipboard(string str)
+         * 21.
+         * 22.
+         * 23.
+         * 24.
+         * 25.
          * 备注：
          * 1）1.默认值如文件项、生成至路径
          * ———————用到的工具类———————

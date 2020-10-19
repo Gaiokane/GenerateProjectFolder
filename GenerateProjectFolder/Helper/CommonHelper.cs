@@ -45,5 +45,23 @@ namespace GenerateProjectFolder.Helper
 
             return result;
         }
+
+        /// <summary>
+        /// 复制文本到剪切板
+        /// </summary>
+        /// <param name="str">文本</param>
+        /// <returns>true,false</returns>
+        public static bool CopyToClipboard(string str)
+        {
+            try
+            {
+                System.Windows.Forms.Clipboard.SetDataObject(str);
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
     }
 }
