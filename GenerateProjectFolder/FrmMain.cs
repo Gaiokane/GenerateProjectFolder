@@ -23,6 +23,9 @@ namespace GenerateProjectFolder
             Helper.ConfigHelper.init();
             txtbox_GenerateTo.Text = Helper.ConfigHelper.getappSettings("DefaultProjectFolder");
             txtbox_ProjectNum.Select();
+
+            //隐藏 测试功能 按钮
+            btn_Test.Visible = false;
         }
 
         /// <summary>
