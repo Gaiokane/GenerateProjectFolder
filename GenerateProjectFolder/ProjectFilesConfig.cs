@@ -62,6 +62,8 @@ namespace GenerateProjectFolder
                 txt_VersionUpdateLog();
                 //TXT_问题
                 txt_Problem();
+                //TXT_部署记录
+                txt_DeploymentRecord();
                 //项目文件夹桌面快捷方式
                 FileHelper.CreateShortcutOnDesktop(projectnum + projectname, projectfolderpath);
                 //缺陷截图文件夹桌面快捷方式
@@ -401,6 +403,34 @@ namespace GenerateProjectFolder
             try
             {
                 if (FileHelper.CreateNewFile(projectfolderpath + @"\" + projectabbreviation + "问题.txt", ""))
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// TXT_部署记录
+        /// </summary>
+        /// <returns>成功、失败</returns>
+        private static bool txt_DeploymentRecord()
+        {
+            /* \n
+             *  -> 
+             * \n
+             */
+            try
+            {
+                string content = "\n -> \n";
+                if (FileHelper.CreateNewFile(projectfolderpath + @"\" + projectabbreviation + "部署记录.txt", content))
                 {
                     return true;
                 }
